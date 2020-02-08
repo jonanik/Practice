@@ -4,7 +4,9 @@ public class Home0208_1 {
 
 	public static void main(String[] args) {
 		// 학원 강사님 코드 복습.(재입력 하면서 코드 이해)
-
+		// for문 안에서 승,패,무의 횟수를 누적변수로 확인할 수 있다. 
+		//이때 1,2,3 이외의 수를 냈을 경우는 count++되어 게임 횟수로 치면 안되기때문에 
+		//if문을 이용하여 1,2,3이외의 수를 냈을 경우 i--를 해줘야 게임 횟수가 올바로 측정된다.
 		String id = "aaa";
 		String pass = "1234";
 		String id_ch = "";
@@ -51,7 +53,7 @@ public class Home0208_1 {
 				// 1-3=-2(승리) 1-1=0(무승부) 1-2=-1(패배)
 				// 2-1=1(승리) 2-2=0(무승부) 2-3=-1(패배)
 				// 3-2=1(승리) 3-3=0(무승부) 3-1=2(패)
-				switch (user-com) {
+				switch (user - com) {
 				case 1:
 				case -2:
 					System.out.println("사용자 승리");
@@ -73,10 +75,10 @@ public class Home0208_1 {
 			} // for
 			break;
 		} // while
-		System.out.println("게임 횟수:"+ count);
-		System.out.println("승리 횟수:"+ win);
-		System.out.println("무승부 횟수:"+ draw);
-		System.out.println("패배 횟수:"+ lose);
+		System.out.println("게임 횟수:" + count);
+		System.out.println("승리 횟수:" + win);
+		System.out.println("무승부 횟수:" + draw);
+		System.out.println("패배 횟수:" + lose);
 	}// main
 
 }// class
