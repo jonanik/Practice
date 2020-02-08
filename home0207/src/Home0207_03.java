@@ -80,7 +80,7 @@ public class Home0207_03 {
 					System.out.println("----------------");
 					System.out.println("주민번호를 입력해주세요");
 					jumin = sc.next();
-
+					jumin_check2 = jumin.charAt(7) - '0';
 					if (jumin_check2 == 1 || jumin_check2 == 3) {
 						System.out.println("남자입니다.");
 					} else if (jumin_check2 == 2 || jumin_check2 == 4) {
@@ -97,7 +97,9 @@ public class Home0207_03 {
 					}
 				} // 나이확인 프로그램 while
 			} // 나이확인 프로그램 else if
+			
 			else if (select == 3) {
+				while(true) {
 				System.out.println("-----------------");
 				System.out.println("생일확인 프로그램입니다.");
 				System.out.println("-----------------");
@@ -123,6 +125,8 @@ public class Home0207_03 {
 					continue;
 				}
 			}
+			}//else if
+			
 		} // while
 
 	}// switch
