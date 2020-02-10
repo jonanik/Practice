@@ -27,8 +27,8 @@ public class Home0209_02 {
 			}else {
 			System.out.println("가위~ 바위~ 보!");
 			System.out.println("-------------");
-			com = (int) (Math.random() * 3 + 1);
 			while (true) {
+				com = (int) (Math.random() * 3 + 1);
 				if (!(player >= 1 || player <= 3)) {
 					System.out.println("1.가위 2.바위 3.보 중에 내주세요");
 					break;
@@ -54,6 +54,7 @@ public class Home0209_02 {
 			}//else
 			System.out.println("-------------");
 			System.out.printf("플레이어:%d|컴퓨터:%d|%n%d 판째", player, com, count);
+			
 			continue;
 		} // while
 System.out.println("총 게임횟수:"+game_num+"회");
