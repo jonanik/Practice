@@ -43,7 +43,7 @@ public class Home0223_03 {
 
 	static void compare(int[] my, int[] ball, int[] win, int win_count) {
 		for (int i = 0; i < my.length; i++) {
-			for (int j = 0; j < 3; j++) {
+			for (int j = 0; j < 6; j++) {
 				if (my[i] == ball[j]) {
 					win[i] = my[i];
 					win_count++;
