@@ -86,9 +86,31 @@ public class Home0303_1 {
 				break;
 			case 5:
 				System.out.println("학생정보검색 메뉴 입니다.");
-				break;
+				System.out.println("검색할 학생의 이름을 입력하세요.");
+				String name=scan.next();
+				for(int i=0; i<stuinfo.size();i++) {
+					Student s=(Student)stuinfo.get(i);
+					if(!(name.equals(s.name))) {
+						continue;
+					}else if(name.equals(s.name)) {
+						System.out.println(s);
+					}
+					
+				}
 			case 6:
 				System.out.println("성적검색 메뉴 입니다.");
+				System.out.println("검색할 학생의 이름을 입력하세요.");
+				String name1=scan.next();
+				for(int i=0; i<stuinfo.size();i++) {
+					Student s1=(Student)stuinfo.get(i);
+					StuScore s=(StuScore)stuscore.get(i);
+					if(!(name1.equals(s1.name))) {
+						continue;
+					}else if(name1.equals(s1.name)) {
+						System.out.println(s1.hak_num + "\t" + s1.name + "\t" + s.kor + "\t" + s.eng + "\t" + s.total + "\t" + s.avg);
+					}
+					
+				}
 				break;
 			case 0:
 				System.out.println("프로그램을 종료합니다.");
