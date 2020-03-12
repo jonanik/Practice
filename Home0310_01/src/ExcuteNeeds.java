@@ -6,7 +6,7 @@ public class ExcuteNeeds implements ThingsNeeded {
 	int player2 = 1;
 	int count1 = 1;
 	int count2 = 1;
-	
+
 	@Override // 메인메뉴
 	public String main() {
 		Scanner scan = new Scanner(System.in);
@@ -73,7 +73,7 @@ public class ExcuteNeeds implements ThingsNeeded {
 	@Override
 
 	public void cardForp1(ArrayList<Deck> shuffleDeck, ArrayList<Deck> p1Card) {
-		
+
 		if (p1Card.size() == 7) {
 			System.out.println("카드 7장을 모두 받았습니다.");
 			return;
@@ -88,7 +88,7 @@ public class ExcuteNeeds implements ThingsNeeded {
 
 	@Override
 	public void cardForp2(ArrayList<Deck> shuffleDeck, ArrayList<Deck> p2Card) {
-		
+
 		if (p2Card.size() == 7) {
 			System.out.println("카드 7장을 모두 받았습니다.");
 			return;
@@ -109,7 +109,7 @@ public class ExcuteNeeds implements ThingsNeeded {
 		for (int i = 0; i < p1Card.size(); i++) {
 			System.out.println(p1Card.get(i));
 		}
-		
+
 		System.out.println("-----------");
 		System.out.println("p2의 카드");
 		System.out.println("-----------");

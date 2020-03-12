@@ -5,6 +5,7 @@ public class Home0223_04 {
 	public static void main(String[] args) {
 		Scanner scan= new Scanner(System.in);
 		Student[] s=new Student[3];
+		String[] subject= {"학번","이름","국어","영어","수학","합계","평균"};
 		int stu_count=0;
 		for(int i=0; i<s.length;i++) {
 			System.out.println("이름을 입력하세요.");
@@ -23,8 +24,14 @@ public class Home0223_04 {
 //		for(int i=0; i<stu_count;i++) {
 //			System.out.println(Student.stu_num;
 //		}
+		for(int i=0; i<subject.length; i++) {
+			System.out.print(subject[i]+"\t");
+		}
+		System.out.println();
 		for(int i=0; i<stu_count;i++) {
+			System.out.print(Student.stu_num+"\t");
 			System.out.println(s[i].name+"\t"+s[i].kor+"\t"+s[i].eng+"\t"+s[i].math+"\t"+s[i].total+"\t"+s[i].avg+"\t");
+			Student.stu_num++;
 		}
 	}
 

@@ -1,9 +1,7 @@
 public class Deck {
 	String kind;
 	char num;
-	
-	
-	
+
 	Deck() {
 	}
 

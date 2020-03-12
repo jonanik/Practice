@@ -97,6 +97,7 @@ public class Home0303_1 {
 					}
 					
 				}
+				break;
 			case 6:
 				System.out.println("성적검색 메뉴 입니다.");
 				System.out.println("검색할 학생의 이름을 입력하세요.");
