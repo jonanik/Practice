@@ -55,14 +55,19 @@ class Student implements Comparator<Student> {
 
 	}
 
-	@Override
+//	@Override
+//	public int compare(Student s1, Student s2) {
+//		if (s1.hakNum < s2.hakNum) {
+//			return 1;
+//		} else if (s1.hakNum > s2.hakNum) {
+//			return -1;
+//		}
+//		return 0;
+//	}
 	public int compare(Student s1, Student s2) {
-		if (s1.hakNum < s2.hakNum) {
-			return 1;
-		} else if (s1.hakNum > s2.hakNum) {
-			return -1;
-		}
-		return 0;
+		
+			return s1.name.compareTo(s2.name);
+		
 	}
 
 }
