@@ -9,11 +9,12 @@ public class Excute implements Interface {
 		System.out.println("-----------------");
 		System.out.println("학생성적 처리 프로그램");
 		System.out.println("-----------------");
-		System.out.println("1.성적입력  2.성적출력 3.학생 검색 및 성적수정");
-		System.out.println();
-		System.out.println("4.등수처리  5.등수출력");
-		System.out.println();
+		System.out.println("1.성적입력");
+		System.out.println("2.성적출력");
+		System.out.println("3.학생 검색 및 성적수정" );
+		System.out.println("4.등수처리 및 확인");
 		System.out.println("0.프로그램 종료");
+		System.out.println("-----------------");
 		String select = "0";
 		select = scan.next();
 		return select;
@@ -53,16 +54,16 @@ public class Excute implements Interface {
 		System.out.println("-------------------");
 		System.out.println("[성적 출력메뉴입니다.]");
 		System.out.println("-------------------");
-		System.out.println("-------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------");
 		for (int i = 0; i < category.length; i++) {
 			System.out.print(category[i] + "\t");
 		}
 		System.out.println();
-		System.out.println("-------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------");
 		for (int i = 0; i < stuList.size(); i++) {
 			System.out.println(stuList.get(i));
 		}
-		System.out.println("-------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------");
 		System.out.println("입력된 학생의 성적을 모두 출력하였습니다.");
 		System.out.println("----------------------------");
 	}
@@ -184,7 +185,7 @@ public class Excute implements Interface {
 	}
 
 	@Override
-	public void rankprocess(ArrayList<Student> stuList) {
+	public void rankprocess(ArrayList<Student> stuList,String[] category) {
 		System.out.println("[등수처리 메뉴입니다.]");
 		int rankCount = 1;
 		for (int i = 0; i < stuList.size(); i++) {
@@ -197,8 +198,8 @@ public class Excute implements Interface {
 			}
 			stuList.get(i).rank=rankCount;
 		}
-System.out.println("등수처리가 완료되었습니다. 성적출력에서 확인해보세요.");
-System.out.println("-------------------------------------");
+		printScore(stuList, category);
+
 	}
 
 	@Override

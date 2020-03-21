@@ -6,8 +6,8 @@ public class ScoreProcess {
 	public static void main(String[] args) {
 		ArrayList<Student> stuList = new ArrayList<Student>();
 		ArrayList<Student> reinput = new ArrayList<Student>();
-		String[] category= {"학번","이름","학과","국어","영어","수학","합계","평균"};
-		Student s=new Student();
+		String[] category= {"학번","이름","학과","국어","영어","수학","합계","평균","등수"};
+		
 		Interface i = new Excute();
 
 		while (true) {
@@ -22,9 +22,7 @@ public class ScoreProcess {
 				i.searchStu(stuList,reinput);
 				break;
 			case "4":
-				i.rankprocess(stuList);
-				break;
-			case "5":
+				i.rankprocess(stuList,category);
 				break;
 			case "0":
 				System.out.println("프로그램을 종료합니다.");
