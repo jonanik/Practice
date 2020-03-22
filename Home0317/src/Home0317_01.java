@@ -12,7 +12,8 @@ public class Home0317_01 {
 		s2.a=30;
 		
 		System.out.println(s1.a);
-		System.out.println(s2.a);
+		System.out.println(s2
+				.a);
 	}
 
 }

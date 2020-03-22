@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+<body>
+<script>
+
+		function check() {
+			if(form.gender.value==""){
+				alert("input gender");
+				form.gender.focus();
+				return false;
+			}
+			if(form.gender.value=="M"||form.gender.value=="m"){
+				alert("Male");
+				form.age.focus();
+				return false;
+			}else if(form.gender.value == "F" || form.gender.value == "f"){
+				alert("Female");
+				form.age.focus();
+				return false;
+			}else{
+				alert("wrong input")
+				form.gender.value="";
+				form.gender.focus();
+				return false;
+			}
+			if(form.age.value>18){
+				alert("adult");
+				form.age.focus();
+				return false;
+			}else{
+				alert("not adult")
+				form.age.focus();
+				return false;
+			}
+			
+// 			if (form.gender.value == F || form.gender.value == f) {
+// 				alert("you are Female");
+
+// 			} else if (form.gender.value == M || form.gender.value == m) {
+// 				alert("you are Male");
+
+// 			}
+// 			if (form.age.value >= 19) {
+// 				alert("you are adult");
+// 			} else {
+// 				alert("you are not adult");
+// 			}
+// 		}
+
+// 		var gender=prompt("input Male(M)/ Female(F)");
+// 		var age=prompt("input your age");
+// 		var result;
+// 		if(gender=="M"){
+// 			if(age>=19){
+// 				result="Male age over 19 adult";
+// 			}else{
+// 				result="Male under 19 not adult";
+// 			}
+// 		}else{
+// 			if(age>=19){
+// 				result="Female age over 19 adult";
+// 			}else{
+// 				result="Female under 19 not adult";
+// 			}
+// 		}
+// 		document.write("you are"+result+".<br>")
+
+</script>
+	<form action="" name="form" method="post">
+		<label>Gender</label><input type="text" id="gender" name="gender">
+		<label>Age</label><input type="text" id="age" name="age" >
+		<input type="button" id="btn" value="data check">
+	</form>
+
+
+</body>
+</html>

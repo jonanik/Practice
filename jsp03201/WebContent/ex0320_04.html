@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+var x=prompt("input first data value");
+var y=prompt("input second data value");
+var z=prompt("input third data value");
+var result;
+
+x=parseInt(x);
+y=parseInt(y);
+z=parseInt(z);
+
+result=(((x>y)? x:y)>z)? ((x>y)? x:y):z;
+document.write(typeof result+"<br>")
+// result=(x>y)? x:y;
+// result2=(result>z)? result:z;
+// document.write(typeof result+"<br>")
+// document.write(typeof result2+"<br>")
+
+document.write("bigger value:"+result+"<br>");
+
+// result=(x>y)? x-y:y-x;
+// document.write("the result of sub smaller value from bigger value:"+ result+"<br>");
+
+
+// var x=prompt("input number");
+// var result=(x>-x)? x:-x;// absolute value;
+// document.write(x+"`s absolute value is:"+ result+"."+"<br>")
+</script>
+</head>
+<body>
+
+</body>
+</html>

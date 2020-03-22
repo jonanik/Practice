@@ -22,7 +22,7 @@ class Child extends Parent {
 	void see() {
 		System.out.println("x:" + x);
 		System.out.println("this.x:" + this.x);
-		System.out.println("super.x:" + super.x);
+		System.out.println("super.x:" + super.x);//super는 조상클래스의 주소값을 갖는 참조변수이다. 
 
 	}
 
@@ -40,7 +40,7 @@ class Parent1 {
 class Child1 extends Parent1 {
 
 	void see() {
-		super.see();
+		super.see();//조상의 변수를 참조할 수 있는 것처럼 조상의 메소드 또한 참조할 수 있다.
 		System.out.println("super.x:" + super.x);
 
 	}

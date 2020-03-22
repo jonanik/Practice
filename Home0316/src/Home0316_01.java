@@ -3,10 +3,11 @@ import java.util.Scanner;
 
 public class Home0316_01 {
 
+	//객체의 이해 연습 8 상속과 포함관계
+	
 	public static void main(String[] args) {
 		Scanner scan=new Scanner(System.in);
-		System.out.println("색깔을 입력");
-		String color=scan.next();
+		
 		System.out.println("x값을 입력");
 		int x=scan.nextInt();
 		System.out.println("y값을 입력");
@@ -14,7 +15,6 @@ public class Home0316_01 {
 		System.out.println("r값을 입력");
 		int r=scan.nextInt();
 		Point p=new Point(x,y);
-		Shape s=new Shape(color);
 		Circle c=new Circle(p,r);
 		
 		c.draw();

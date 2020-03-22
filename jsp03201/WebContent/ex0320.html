@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function check(){
+		if(form.name.value==""){
+			alert("input you name");
+			form.name.value="";
+			form.name.focus();
+			return false;
+		}
+		if(form.name.value.length<3){
+			alert("input name over 3 words");
+			form.name.focus();
+			return false;
+		}
+			
+		if((form.kor.value>100)||(form.eng.value>100)){
+			alert("it`s possible to input until 100")
+			form.kor.value="";
+			form.kor.focus();
+		}
+		
+	}
+
+</script>
+
+</head>
+<body>
+	<form name="form" action="" method="post">
+	<label>studentName:</label><input type="text" name="name"><br>
+	<label>gradeOfKor: </label><input type="text" name="kor"><br>
+	<label>gradeOfEng: </label><input type="text" name="eng"><br>
+	<label>total</label><input type="text" name="total" disabled><br>
+	<input type="button" onclick="check()" value="input data">
+	</form>
+
+
+
+
+</body>
+</html>
