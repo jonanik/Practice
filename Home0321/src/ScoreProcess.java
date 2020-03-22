@@ -24,6 +24,9 @@ public class ScoreProcess {
 			case "4":
 				i.rankprocess(stuList,category);
 				break;
+			case "5":
+				i.delete(stuList,category);				
+				break;
 			case "0":
 				System.out.println("프로그램을 종료합니다.");
 				System.exit(0);

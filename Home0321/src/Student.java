@@ -8,7 +8,7 @@ int kor;
 int eng;
 int math;
 int total;
-double avg;
+int avg;
 int rank=0;;
 
 {count++;
@@ -26,7 +26,7 @@ Student(String name, String major, int kor, int eng,int math){
 	this.eng=eng;
 	this.math=math;
 	this.total=kor+eng+math;
-	this.avg=total/3.0;
+	this.avg=total/3;
 	
 }
 @Override

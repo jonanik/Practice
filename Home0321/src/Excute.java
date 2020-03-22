@@ -11,8 +11,9 @@ public class Excute implements Interface {
 		System.out.println("-----------------");
 		System.out.println("1.성적입력");
 		System.out.println("2.성적출력");
-		System.out.println("3.학생 검색 및 성적수정" );
+		System.out.println("3.학생 검색 및 성적수정");
 		System.out.println("4.등수처리 및 확인");
+		System.out.println("5.학생기록삭제");
 		System.out.println("0.프로그램 종료");
 		System.out.println("-----------------");
 		String select = "0";
@@ -88,7 +89,7 @@ public class Excute implements Interface {
 					System.out.println("---------------------");
 					System.out.println("-------------------------------------------------------------------");
 					System.out.println("학번" + "\t" + "이름" + "\t" + "학과" + "\t" + "국어" + "\t" + "영어" + "\t" + "수학" + "\t"
-							+ "합계" + "\t" + "평균"+"\t"+"등수");
+							+ "합계" + "\t" + "평균" + "\t" + "등수");
 					System.out.println(stuList.get(i));
 					reinput.add(stuList.get(i));
 					System.out.println("-------------------------------------------------------------------");
@@ -185,27 +186,42 @@ public class Excute implements Interface {
 	}
 
 	@Override
-	public void rankprocess(ArrayList<Student> stuList,String[] category) {
-		System.out.println("[등수처리 메뉴입니다.]");
+	public void rankprocess(ArrayList<Student> stuList, String[] category) {
+		
 		int rankCount = 1;
 		for (int i = 0; i < stuList.size(); i++) {
-			rankCount=1;
+			rankCount = 1;
 			for (int j = 0; j < stuList.size(); j++) {
 				if (stuList.get(i).total < stuList.get(j).total) {
 					rankCount++;
 				}
 
 			}
-			stuList.get(i).rank=rankCount;
+			stuList.get(i).rank = rankCount;
 		}
 		printScore(stuList, category);
 
 	}
 
 	@Override
-	public void printRank() {
-		// TODO Auto-generated method stub
+	public void delete(ArrayList<Student> stuList,String[] category) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("[학생기록삭제 메뉴입니다.]");
+		re: while (true) {
+			System.out.println("삭제할 학생의 이름을 입력해주세요.(이전:0)");
+			String name = scan.next();
+			if(name.equals("0")) {
+				return;
+			}
+			for (int i = 0; i < stuList.size(); i++) {
+				if (name.equals(stuList.get(i).name)) {
+					System.out.println(stuList.get(i).name + "학생의 기록을 삭제합니다.");
+					stuList.remove(i);
+					rankprocess(stuList, category);
+					continue re;
+				}
+			}
+		}
 
 	}
-
 }

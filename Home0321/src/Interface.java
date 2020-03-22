@@ -7,6 +7,6 @@ void printScore(ArrayList<Student> stuList,String[] category);
 void searchStu(ArrayList<Student> stuList,ArrayList<Student> reinput);
 void reinput(ArrayList<Student> stuList,ArrayList<Student> reinput);
 void rankprocess(ArrayList<Student> stuList,String[] category);
-void printRank();
+void delete(ArrayList<Student> stuList,String[] category);
 
 }
