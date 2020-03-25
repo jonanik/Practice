@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<p id='year'></p>
+<p id='month'></p>
+<p id='date'></p>
+<p id='day'></p>
+<p id='hour'></p>
+<p id='minute'></p>
+<p id='second'></p>
+<p id='digitalClock'></p>
+<script>
+
+
+ function digclock(){
+var day="일월화수목금토일";
+var today=new Date();
+var year=document.getElementById('year').innerHTML=today.getFullYear()+"년";
+var month=document.getElementById('month').innerHTML=(today.getMonth()+1)+"월";
+var date=document.getElementById('date').innerHTML=today.getDate()+"일";
+var day=document.getElementById('day').innerHTML=day.charAt(today.getDay())+"요일";
+var hour=document.getElementById('hour').innerHTML=today.getHours()+"시";
+var minute=document.getElementById('minute').innerHTML=today.getMinutes()+"분";
+var second=document.getElementById('second').innerHTML=today.getSeconds()+"초";
+
+var date=year+" "+month+" "+date+" "+day;
+var time=" "+hour+" "+minute+" "+second;
+	document.write(date+time);
+	
+	
+}
+digclock();
+</script>
+
+
+</body>
+</html>
