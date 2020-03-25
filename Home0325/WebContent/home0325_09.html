@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>[car1]</p>
+	<p id='data10'></p>
+	<p id='data20'></p>
+	<p id='data30'></p>
+	<p>[car2]</p>
+	<p id='data11'></p>
+	<p id='data21'></p>
+	<p id='data31'></p>
+	<p>[car3]</p>
+	<p id='data12'></p>
+	<p id='data22'></p>
+	<p id='data32'></p>
+
+	<script>
+
+var Car=[
+		{name:'sonata',color:'white',speed:100},
+		{name:'jeep',color:'red',speed:200},
+		{name:'passt',color:'blue',speed:300}
+		]
+for(var i=0; i<3; i++){
+var cname=document.getElementById('data1'+i);
+cname.textContent="차이름:"+Car[i].name;
+var ccol=document.getElementById('data2'+i);
+ccol.textContent="차 색상:"+Car[i].color;
+var cspeed=document.getElementById('data3'+i);
+cspeed.textContent="차 스피드"+Car[i].speed;
+}
+		
+
+</script>
+</body>
+</html>

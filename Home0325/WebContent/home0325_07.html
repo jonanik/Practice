@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+function Car(name,color,speed){
+	this.name=name;
+	this.color=color;
+	this.speed=speed;
+	this.speedup=function(){
+		return this.speed+10;
+	};
+	this.speeddown=function(){
+		return this.speed-10;
+	};
+}
+
+var Hongcar=new('sonata','blue',100);
+var Kimcar=new('jeep','red',70);
+var	Leecar=new('passt','white',150);
+
+
+</script>
+
+</body>
+</html>

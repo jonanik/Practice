@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<p>[Hong`s Car]</p>
+<p id='carname'></p>
+<p id='carcolor'></p>
+<p id='carspeed'></p>
+<p>[Kim`s Car]</p>
+<p id='carname1'></p>
+<p id='carcolor1'></p>
+<p id='carspeed1'></p>
+<script>
+ function Car(name,color,speed){
+	 this.name=name;
+	 this.color=color;
+	 this.speed=speed;
+	 this.speedup=function(){
+		 return this.speed+10;
+	 };
+	 this.speeddown=function(){
+		 return this.speed-10;
+	 };
+ }
+ 
+ var HongCar= new Car('sonata','white',100);
+ var KimCar= new Car('jeep','red',200);
+ 
+ var cname=document.getElementById('carname');
+ cname.textContent="차 이름:"+HongCar.name;
+ var ccol=document.getElementById('carcolor');
+ ccol.textContent="차 색상:"+HongCar.color;
+ var cspeed=document.getElementById('carspeed');
+ cspeed.textContent="차 스피드:"+HongCar.speedup();
+
+ var cname=document.getElementById('carname1');
+ cname.textContent="차 이름:"+KimCar.name;
+ var ccol=document.getElementById('carcolor1');
+ ccol.textContent="차 색상:"+KimCar.color;
+ var cspeed=document.getElementById('carspeed1');
+ cspeed.textContent="차 스피드:"+KimCar.speedup();
+
+</script>
+</body>
+</html>
