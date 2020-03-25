@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<p id='carname'></p>
+<p id='carcolor'></p>
+<p id='carspeed'></p>
+<script>
+var car=new Object();
+car.name='sonata';
+car.speed=100;
+car.color='blue';
+car.speedup=function(){
+	return this.speed+10;
+	
+};
+var cname=document.getElementById('carname');
+cname.textContent="차 이름:"+car.name;
+var ccol=document.getElementById('carcolor');
+ccol.textContent="차 색상:"+car.color;
+var cspeedup=document.getElementById('carspeed');
+cspeedup.textContent="차 속도:"+car.speedup();
+</script>
+</body>
+</html>

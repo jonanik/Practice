@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<p id='upspeed'></p>
+	<p id='downspeed'></p>
+	<script>
+		var car = {
+			name : 'sonata',
+			speed : 100,
+			color : 'white',
+			speedup : function(a) {
+				var sp = this.speed + a;
+				if (sp > 300) {
+					sp = 50;
+					return sp;
+				} else {
+					return sp;
+				}
+			},
+			speeddown : function(a) {
+				var sp = this.speed - a;
+				if (sp < 0) {
+					sp = 0;
+					return sp;
+
+				} else {
+					return sp;
+				}
+			}
+		}
+
+		var speedup = document.getElementById('upspeed');
+		speedup.textContent = "속도증가:" + car.speedup(300);
+		var speeddown = document.getElementById('downspeed');
+		speeddown.textContent = "속도감소:" + car.speeddown(120);
+	</script>
+</body>
+</html>
