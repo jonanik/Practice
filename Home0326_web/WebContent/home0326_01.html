@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+<script type="text/javascript" src="js/custom.js"></script>
+</head>
+<body>
+	<form>
+
+		<div id="info">
+			<ul>
+				<li><label>수령장소(입국)</label> <select>
+						<option>선택</option>
+						<option>인천공항T1</option>
+						<option>인천공항T2</option>
+						<option>김포공항</option>
+						<option>김해공항</option>
+						<option>부산항만</option>
+						<option>인천항만</option>
+				</select></li>
+				<li><label>반납장소(출국)</label> <select>
+						<option>선택</option>
+						<option>인천공항T1</option>
+						<option>인천공항T2</option>
+						<option>김포공항</option>
+						<option>김해공항</option>
+						<option>부산항만</option>
+						<option>인천항만</option>
+				</select> <!-- 				</li> -->
+			</ul>
+		</div>
+		<div id="servieSelect">
+			<table id="Selecttable">
+				<tr>
+					<th rowspan="2">Prepaid Data SIM</th>
+					<td><input type="checkbox" id="prd1"> ￦6,600 1일(24시간)</td>
+					<td><input type="checkbox" id="prd2"> ￦27,500 5일(120시간)	</td>
+					<td><input type="checkbox" id="prd3"> ￦38,500 10일(240시간)</td>
+				</tr>
+				<tr>
+
+					<td><input type="checkbox" id="prd4"> ￦60,500 20일(480시간)</td>
+					<td colspan="2"><input type="checkbox" id="prd5"> ￦71,500 30일(720시간)</td>
+
+				</tr>
+				<tr>
+					<th rowspan="2">Prepaid SIM</th>
+					<td><input type="checkbox" id="prd6"> ￦6,600 1일(24시간)</td>
+					<td><input type="checkbox" id="prd7"> ￦27,500 5일(120시간)	</td>
+					<td><input type="checkbox" id="prd8"> ￦38,500 10일(240시간)</td>
+				</tr>
+				<tr>
+
+					<td><input type="checkbox" id="prd9"> ￦60,500 20일(480시간)</td>
+					<td colspan="2"><input type="checkbox" id="prd10"> ￦71,500 30일(720시간)</td>
+
+				</tr>
+				<tr>
+					<th>Postpaid SIM</th>
+					<td><input type="checkbox" id="prd11"> ￦27,500 (5일권)</td>
+					<td><input type="checkbox" id="prd12"> ￦38,500 (10일권)</td>
+					<td><input type="checkbox" id="prd13"> ￦71,500 (30일권)</td>
+				</tr>
+				<tr>
+					<th>기타상품</th>
+					<td><input type="checkbox" id="prd14">WiFi Router</td>
+					<td><input type="checkbox" id="prd15">휴대폰</td>
+					<td><input type="checkbox" id="prd16">보조배터리</td>
+				</tr>
+			</table>
+		</div>
+		<div id="dateSelect">
+			<ul>
+				
+				<li><label>임대일</label>
+				<input type="date" min="2020-03-26" max="2021-03-26">
+				</li>
+			</ul>
+		</div>
+		<div id="showService">
+			<table id="showtable" >
+				<thead>
+					<!-- 1 -->
+					<tr >
+						<th>상품</th>
+						<th>이용요금</th>
+						<th>임대기간요금</th>
+						<th>수량</th>
+						<th>합계</th>
+						<th>삭제</th>
+					</tr>
+				<thead>
+				<tbody>
+					<!-- 2 -->
+					<tr id="service1" class="serve">
+						<td>Prepaid Data SIM 1일(24시간)<p>본 상품은 1일 동안 이용 가능합니다.</p> </td>
+						<td>6,600 원 / 1개</td>
+						<td>-</td>
+						<td></td>
+						<td>0원</td>
+						<td><a href="none" id="close1"><img src="images/btn_close.gif"></a></td>
+					</tr>
+					<!-- 3 -->
+					<tr id="service2" class="serve">
+						<td>Prepaid Data SIM 5일(120시간)<p>본 상품은 5일 동안 이용 가능합니다.</p> </td>
+						<td>27,500 원 / 1개	</td>
+						<td>-</td>
+						<td></td>
+						<td>0원</td>
+						<td><a href="none" id="close2"><img src="images/btn_close.gif"></a></td>
+					</tr>
+					<!-- 4 -->
+					<tr id="service3" class="serve">
+						<td>Prepaid Data SIM 10일(240시간)<p>본 상품은 10일 동안 이용 가능합니다.</p> </td>
+						<td>38,500 원 / 1개	</td>
+						<td>-</td>
+						<td></td>
+						<td>0원</td>
+						<td><a href="none" id="close3"><img src="images/btn_close.gif"></a></td>
+					</tr>
+					<!-- 5 -->
+					<tr id="service4" class="serve">
+						<td>Prepaid Data SIM 20일(480시간)<p>본 상품은 20일 동안 이용 가능합니다.</p></td>
+						<td>60,500 원 / 1개	</td>
+						<td>-</td>
+						<td></td>
+						<td>0원</td>
+						<td><a href="none" id="close4"><img src="images/btn_close.gif"></a></td>
+					</tr>
+					<!-- 6 -->
+					<tr id="service5" class="serve">
+						<td>Prepaid Data SIM 30일(720시간)<p>본 상품은 30일 동안 이용 가능합니다.</p></td>
+						<td>71,500 원 / 1개	</td>
+						<td>-</td>
+						<td></td>
+						<td>0원</td>
+						<td><a href="none" id="close5"><img src="images/btn_close.gif"></a></td>
+					</tr>
+					<!-- 7 -->
+					<tr>
+						<td></td>
+						<td colspan="5"></td>
+					</tr>
+					<!-- 8 -->
+					<tr>
+						<td></td>
+						<td colspan="5"></td>
+					</tr>
+					<!-- 9 -->
+					<tr>
+						<td></td>
+						<td colspan="5"></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</form>
+</body>
+</html>
