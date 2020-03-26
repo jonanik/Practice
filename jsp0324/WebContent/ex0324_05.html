@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+var city=new Array("seoul","busan","incheon");
+function printArr(){
+	if(city instanceof Array){
+		document.write("배열이 맞습니다.<br>");
+		var i;
+		for(i=0; i<city.length;i++){
+			document.write('배열 데이터['+i+"]"+city[i]+"<br>");
+		}
+	}else{
+		document.write("배열이 아닙니다.<br>");
+		document.write("데이터 값:"+city+"<br>");
+	}
+}
+printArr();
+document.write('city 변수 타입 비교:'+typeof city+"<br>");
+document.write("city isArray타입 비교:"+Array.isArray(city))+"<br>";
+
+</script>
+
+</body>
+</html>

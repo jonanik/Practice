@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		var lotto = [];
+		function insertNum() {
+			var i = 0;
+			for (i = 0; i < 45; i++) {
+				lotto[i] = i + 1;
+			}
+			printNum();
+		}
+
+		function printNum() {
+			var i;
+			for (i = 0; i < lotto.length; i++) {
+				document.write("lotto[" + i + "]" + lotto[i] + "<br>");
+			}
+			addNum();
+		}
+		function addNum() {
+			var i;
+			var sum = 0;
+			for (i = 0; i < lotto.length; i++) {
+				sum += lotto[i];
+			}
+			document.write("덧셈의 결과 값:" + sum + "<br>");
+			document.write('<a href="ex0324_06.html">돌아가기</a><br>');
+		}
+		function delNum(){
+			insertNum();
+			
+			for(var i=1; i<lotto.length;i+=2){
+				lotto[i]=0;
+			}
+			printNum();
+// 			for(var i=1; i<lotto.length;i++){
+// 				document.write("["+i+"]번째열"+lotto[i]+"<br>");
+// 			}
+			document.write('<a href="ex0324_06.html">돌아가기</a><br>');
+		}
+	</script>
+	</head>
+<body>
+
+	<button onclick="insertNum()">배열객체선언/출력/연산</button><br>
+	<button onclick="delNum()">배열의 홀수 번쨰 초기화</button>
+	
+	
+	
+</body>
+</html>
+

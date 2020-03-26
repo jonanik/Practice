@@ -81,6 +81,7 @@ class Excute1 {
 
 	void rank(ArrayList<Student> stuList) {
 
+		
 		int rankCount = 1;
 		for (int i = 0; i < stuList.size(); i++) {
 			rankCount = 1;

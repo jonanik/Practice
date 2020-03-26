@@ -6,7 +6,7 @@ public class Ex0324 {
 
 	public static void main(String[] args) {
 		ArrayList<Card> deck=new ArrayList<Card>();
-		ArrayList<Card> shuffle=new ArrayList<Card>();
+	
 		
 		ArrayList<Card> player=new ArrayList<Card>();
 		Excute e=new Excute();
@@ -16,7 +16,7 @@ public class Ex0324 {
 			e.input(deck);
 			break;
 		case "2":
-			e.shuffle(deck,shuffle);
+			e.shuffle(deck);
 			System.out.println(deck.size());
 		break;
 		

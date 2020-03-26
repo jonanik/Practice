@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr = [];
+input();
+		function input() {
+
+			for (var i = 0; i < 45; i++) {
+				arr[i] = i + 1;
+				document.write("데이터 값: " + arr[i] + "  ");
+				if (arr[i] % 5 == 0) {
+					document.write("<br>");
+				}
+			}
+			
+		}
+		function print(){
+			for(var i=0; i<arr.length;i++){
+				document.write("데이터 값:"+arr[i]+" ");
+				if(arr[i]%5==0){
+					document.write("<br>");
+				}
+			}
+			document.write("arr배열 크기:"+arr.length+"<br>");
+			document.write('<a href="ex0324_07.html">돌아가기</a>');
+		}
+
+		function alldelNum(){
+			for(var i=0; i<arr.length;i++){
+				arr[i]=0;
+			}	
+			print();
+		}
+		function delarrayNum(){
+			arr.length=0;
+			document.write("arr배열 크기:"+arr.length+"<br>");
+		}
+		function joinNum(){
+			var j_array = arr.join();
+			var j_array2 = arr.join('-');
+			var j_array3 = arr.join('/');
+			var j_array4 = arr.join('그리고');
+			document.write("조인결과:"+j_array+"<br>");
+			document.write("조인결과:"+j_array2+"<br>");
+			document.write("조인결과:"+j_array3+"<br>");
+			document.write("조인결과:"+j_array4+"<br>");
+			document.write('<a href="ex0324_07.html">돌아가기</a>');
+		}
+		
+		
+		
+		
+		function three_delNum(){
+			for(var i=0; i<arr.length;i++){
+				if(arr[i]%3==0){
+				arr[i]=0;					
+				}
+				continue;
+			}	
+			print();
+		}
+		
+		function addNum(){
+			var sum=0;
+			for(var i=0; i<arr.length;i++){
+				if(arr[i]%5==0){
+				sum=sum+arr[i];			
+				}
+				continue;
+			}	
+			document.write("<br>")
+			document.write("arr배열 크기:"+arr.length+"<br>");
+			document.write('5의 배수의 합:'+sum+'<br>');
+			document.write('<a href="ex0324_07.html">돌아가기</a>');
+		}
+
+	</script>
+
+	<button onclick="alldelNum()">모든 데이터 0초기화</button>
+	<button onclick="three_delNum()">3배수 초기화</button>
+	<button onclick="addNum()">5배수 합계구하기</button>
+	<button onclick="delarrayNum()">배열을 0개로 초기화</button>
+	<button onclick="joinNum()">배열전체문자열</button>
+
+</body>
+</html>
