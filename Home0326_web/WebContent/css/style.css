@@ -3,7 +3,7 @@
 #info{width:745px; height:60.4px;
 border:2px solid border-top:#f4f4f4;
 margin:0 auto;
-margin-top:30px;
+margin-top:25px;
 padding-top:10px;
 background-color:#f4f4f4;
 font-size:12px;
@@ -11,7 +11,10 @@ font-weight:700;
 }
 li{float:left;
 margin-left:30px;
-padding-top:17px;}
+padding-top:17px;
+height:20px;}
+
+.se1{heigth:20px;}
 
 #servieSelect{width:747px; height:283px;
 border-top:2px solid #f4f4f4;
