@@ -1,3 +1,6 @@
 @charset "EUC-KR";
-div{width:300px; height:100px; background:yellow; border:1px solid black; text-align:center;
+
+
+.style{color:blue; font-size:90px;}
+.div{width:300px; height:100px; background:yellow; border:1px solid black; text-align:center;
 }

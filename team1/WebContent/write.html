@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" type="text/css" href="css/write.css">
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="js/prefixfree.dynamic-dom.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="js/write.js"></script>
+		<script type="text/javascript"></script>
+		
+		
+		
+		
+	</head>
+	<body>
+	<form action="" name="form" name="form" method="get">
+		<header>
+			<div id="nav_up">
+				<ul>
+					<li>회원가입</li>
+					<li>로그인</li>
+					<li>고객행복센터</li>
+					<li>배송지역검색</li>
+					<li><a href="adminLogin.html">ADMINISTRATOR</a></li>
+					
+				</ul>
+			</div>
+			<nav>
+				<h1></h1>
+				<ul>
+					<li>COOKIT소개</li>
+					<li>COOKIT메뉴</li>
+					<li>리뷰</li>
+					<li>이벤트</li>
+					<li>MY쿡킷</li>
+				</ul>
+				<ul>
+				<li><a href="#"><span>장바구니</span></a></li>
+				<li><a href="#"><span>메뉴찾기</span></a></li>
+			</ul>
+			</nav>
+		
+		</header>
+	<section>
+		
+		
+			<h4>배송</h4>
+		<div id="big_box">
+			<dl>
+				<dt>주문/상품 선택</dt>
+			<dd>
+				<div>
+					<div>
+						<input type="text" id="txt" placeholder="문의할 주문번호 또는 상품을 선택해주세요.">
+					</div>
+					<button id="box" type="button" onclick="" >조회</button>
+				</div>
+				
+			</dd>
+			</dl>
+			</div>
+			
+		
+			<dl id="second_box">
+				<dt>문의내용</dt>
+				<dd><textarea id="question" cols="87" rows="12" title="문의 내용 작성란" placeholder="문의 내용을 입력해주세욧" maxlength="1000"></textarea>
+				
+				<div>
+				
+					<ul>
+						<li>고객님의 개인정보(이름,핸드폰 번호, 계좌번호 등) 입력 시 관리자에 의해 임의 삭제될 수 있습니다.</li>
+						<li>개인정보 및 환불계좌번호 변경 등 개인정보 관련 문의는 행복고객센터로 연락 부탁 드립니다.</li>
+					</ul>
+				
+				</div>
+			
+			
+			
+				</dd>
+			</dl>
+	
+			<dl id="third_box">
+				<dt>첨부파일</dt>
+			<dd>
+				
+				<div id="big_box12">
+					<input type="file" name="file" id = "image_file" >
+				</div>
+				<div id="small_box12">
+				<ul>
+				<li>최대 5장 등록 (PNG, JPEG, JPG, GIF 포맷)	<span id="span1">
+				<span id="span2">0</span>/30MB
+				</span></li>
+				</ul>
+
+				</div>
+			</dd>
+			</dl>
+			
+			<dl id="forth_box">
+				<dt>답변알림</dt>
+				
+				<dd>
+				<dl>
+					<div id="big_box01">
+					<label id="box22">
+						<input type="checkbox" id="email" name="">
+							</label>
+							
+						
+							<label id="label11" for="email">E-mail 수신</label>
+							<dd id="box33">
+							<input type="text" class="txt" id="email1" title="이메일 아이디" name="cusMailAdr" value=""readonly="readonly">
+							<span id="span22">@</span>
+							<input type="text" class="txt" id="email2" title="이메일 도메인 직접입력" name="cusMailAdr2" readonly="readonly">
+							<span id="selectbox">
+							<select id="email_select" class="required" onchange="changeEmailSelect(this)">
+								<option value="0">직접입력</option>
+								<option value="naver.com">naver.com</option>
+								<option value="hanmail.net">hanmail.net</option>
+								<option value="nate.com">nate.com</option>
+								<option value="gmail.com">gmail.com</option>
+							</select>
+							</span>
+							</dd>
+							</div>
+							
+							</dl>
+	
+							
+				<dl id="second_dl">
+				
+					<div id="big_box001">
+						<label id="box333">
+						<input type="checkbox" id="email33" name="">
+							</label>
+							
+						
+							<label id="label22" for="email33" >SMS</label>
+							
+							</div>
+							
+								<dd id="box44">
+								
+							<select id="sms_select" class="required" onchange="changeEmailSelect(this)">
+										<option value="010" selected="">010</option>
+										<option value="011">011</option>
+										<option value="016">016</option>
+										<option value="017">017</option>
+										<option value="018">018</option>
+										<option value="019">019</option>
+							</select>
+							<input type="text"  id="input_phone02" title="휴대폰 중간 4자리" placeholder="" maxlength="4" name="cusMblNo2" value="">
+							<input type="text"  id="input_phone03" title="휴대폰 끝 4자리" placeholder="" maxlength="4" name="cusMblNo2" value="">
+							
+						
+							</dd>
+							</div>
+							
+							</dl>
+							
+							<div id="job_box">
+								<ul>
+									<li> 알림수신을 위한 일회성 변경으로 회원 기본정보가 변경되지 않습니다.	</li>
+								</ul>
+							</div>
+							
+					
+							
+							
+							</dd>
+							</dl>
+
+		
+		<div id="check_button2">
+		<button id="btn_white" onclick=""><span>취소</span></button>
+		<button id="btn_green" onclick=""><span>확인</span></button>
+		</div>
+		
+		
+		
+		</section>
+		
+		<div id="bot_box">
+        <input type="button" id="bot" class="chatbot" onclick="javascript:cj.chatbot.open('//cookit.oli-va.com');">
+            <span id="bot_span">챗봇으로 문의하기</span>
+       
+   		 </div>
+		
+		
+		
+	<footer>
+		<div id="big">
+			<div>
+				<div></div>
+				<div>
+					<p>©COOKITALL RIGHTS RESERVED</p>
+				</div>
+			</div>
+			<div>
+				<ul>
+					<li>이용약관</li>
+					<li>개인정보처리방침</li>
+					<li>법적고지</li>
+					<li>사업</li>
+				</ul>
+				<div>
+					<p>씨제이제일제당(주) | 대표이사:손경식,강신호,신현재 | 사업자등록번호:104-86-09535</p>
+					<p>주소:서울 중구 동호로330CJ제일제당 센터(우)04560 | 통신판매업신고중고 제07767호 |
+						개인정보보호책임자:조영민</p>
+					<p>이메일:cjon@cj.net | 호스팅제공자:CJ올리브네트웍스(주)</p>
+					<P>고객님은 안전거래를 위해 현금등으로 결제시 LGU+전자 결제의 매매보호(에스크로) 서비스를 이용하실 수
+						있습니다.
+				</div>
+
+			</div>
+
+			<div>
+				<div>
+					<span>CJ그룹계열사 바로가기</span>
+				</div>
+				<div>고객행복센터 1668-1920</div>
+			</div>
+
+		</div>
+
+
+
+	</footer>
+	
+	</form>
+	
+	</body>
+</html>

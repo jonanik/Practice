@@ -1,12 +1,11 @@
 $(document).ready(function(){
-	var count=0;
+	$("#add").click(function(){
+		$("h1,h2,p").addClass("style");
+		$("div").addClass("div");
+	})
+	$("#delete").click(function(){
+		$("h1,h2,p").removeClass("style");
+		$("div").removeClass("div");
+	})
 	
-	$("#div1").mouseenter(function(){
-		$("p:first").text("mouseEnter Count")
-		$("p:last").text(count++);
-	})
-	$("#div1").mouseleave(function(){
-		$("p:first").text("mouse out");
-		$("p:last",this).text("final count:"+n);
-	})
 });
