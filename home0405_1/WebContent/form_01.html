@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function check(){
+	var start=parseInt(form.start.value);
+	var end=parseInt(form.end.value)
+	
+	
+	if(form.start.value==""){
+		alert("데이터를 입력하세요.");
+		form.start.focus();
+		return false;
+	}
+	if(start>end){
+		alert("start값은 end값보다 작아야 합니다.");
+		form.start.focus();
+		return false;
+	}
+	return form.submit();
+}
+
+</script>
+
+<style type="text/css">
+table{border:1px solid black;
+border-collapse:collapse;}
+th,td{border:1px solid black;}
+th{width:80px; height:40px;}
+td{width:200px;}
+
+</style>
+
+</head>
+<body>
+<h2>계산 프로그램</h2>
+	<form action="jsp_01.jsp" name="form" method="get">
+		<table>
+			<tr>
+				<th>시작 값</th>
+				<td><input type="text" name="start"></td>
+			</tr>
+			<tr>
+				<th>종료 값</th>
+				<td><input type="text" name="end"></td>
+			</tr>
+		</table>
+		<input type="button" onclick="check()" value="계산">
+	</form>
+</body>
+</html>
