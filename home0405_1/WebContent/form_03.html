@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function check(){
+	if(form.name.value=""){
+		alert("데이터를 입력하세요.");
+		form.name.focus();
+		return false;
+	}
+	return form.submit();
+}
+
+</script>
+</head>
+<body>
+	<h2>로그인 정보</h2>
+	<form action="jsp_03.jsp" name="form" method="post">
+		<table>
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<th>아이디</th>
+				<td><input type="text" name="id"></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="password" name="pw"></td>
+			</tr>
+		</table>
+		<br>
+<input type="button" onclick="check()" value="전송">
+
+	</form>
+</body>
+</html>
