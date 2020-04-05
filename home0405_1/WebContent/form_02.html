@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function check() {
+		if (form.stuNum.value == "") {
+			alert("데이터를 입력하세요.");
+			form.name.focus();
+			return false;
+		}
+		return form.submit();
+	}
+</script>
+<style type="text/css">
+table{border:1px solid black;
+border-collapse: collapse;
+}
+th,td{border:1px solid black;}
+th{width:80px; height:40px;}
+td{width:300px;}
+</style>
+</head>
+<body>
+	<form action="jsp_02.jsp" name="form" method="post">
+		<table>
+			<tr>
+				<th>학번</th>
+				<td><input type="text" name="stuNum"></td>
+			</tr>
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<th>국어</th>
+				<td><input type="text" name="kor"></td>
+			</tr>
+			<tr>
+				<th>영어</th>
+				<td><input type="text" name="eng"></td>
+			</tr>
+			<tr>
+				<th>수학</th>
+				<td><input type="text" name="math"></td>
+			</tr>
+		</table>
+		<br> <input type="button" onclick="check()" value="전송">
+	</form>
+</body>
+</html>
