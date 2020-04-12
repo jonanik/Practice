@@ -10,7 +10,6 @@
 <%
 session.invalidate();
 response.sendRedirect("join.html");
-
 %>
 </body>
 </html>
