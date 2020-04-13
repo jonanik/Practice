@@ -17,7 +17,7 @@ function check(){
 </script>
 </head>
 <body>
-<form action="ex0413.jsp" name="form" method="post">
+<form action="form1.jsp" name="form" method="post">
 <!-- <h2>찾고자 하는 이름을 입력하세요.</h2> -->
 <!-- 검색어 입력<input type="text" name="name"> -->
 <!-- <input type="submit" value="검색"> -->
@@ -28,12 +28,20 @@ function check(){
 <!-- <input type="submit" value="검색"> -->
 <!-- <input type="reset" value="취소"> -->
 
-<h2>월급 범위검색</h2>
-검색어 입력<br>
-<input type="text" name="salary1">부터<br>
-<input type="text" name="salary2">까지
-<input type="button" onclick="check()" value="검색">
-<input type="reset" value="취소">
+<!-- <h2>월급 범위검색</h2> -->
+<!-- 검색어 입력<br> -->
+<!-- <input type="text" name="salary1">부터<br> -->
+<!-- <input type="text" name="salary2">까지 -->
+<!-- <input type="button" onclick="check()" value="검색"> -->
+<!-- <input type="reset" value="취소"> -->
+
+<select name="select">
+<option>선택</option>
+<option value="name">이름검색</option>
+<option value="salary">월급검색</option>
+</select>
+<input type="submit" value="선택">
 </form>
+
 </body>
 </html>

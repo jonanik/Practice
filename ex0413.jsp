@@ -37,44 +37,64 @@ tr,th,td{border:1px solid black;}
 <th>부서명</th>
 </tr>
 <%
-request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8");
 
 try{
 	Class.forName("oracle.jdbc.driver.OracleDriver");//톰캣을 jdbc에 연결한다.
 	con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","ora_user","1234");//jdbc를 오라클에 연결한다.
 	stmt=con.createStatement();//statement 연결
+	
 	String in1=request.getParameter("salary1");
 	String in2=request.getParameter("salary2");
+	String name=request.getParameter("name");
 	
 	out.println(in1+"<br>");
 	out.println(in2+"<br>");
+	out.println(name+"<br>");
 	
 	String sql="select employee_id,emp_name,salary,job_id from employees where salary between "+in1+" and "+ in2+" order by employee_id asc";	
-	String sql2="select employee_id,emp_name,salary,job_id from employees where salary >="+in1+"and salary<="+ in2+" order by employee_id asc";	
+	String sql2="select employee_id,emp_name,salary,job_id from employees where emp_name like '%"+name+"%'";	
 // 	String sql2="select * from member where id= '"+in2+"'";
-	rs=stmt.executeQuery(sql2);
-	while(rs.next()){
-		out.println("<tr>");
-		out.println("<td>"+rs.getInt("employee_id")+"</td>");
-		out.println("<td>"+rs.getString("emp_name")+"</td>");
-		out.println("<td>"+rs.getFloat("salary")+"</td>");
-		out.println("<td>"+rs.getString("job_id")+"</td>");
-		out.println("</tr>");
-	}
-	out.println("<a href='form.html'>다시 검색하기</a>");
-	
-}catch(Exception e){
-	e.printStackTrace();
-}finally{
-	try{
-		if(rs!=null) rs.close();
-		if(stmt!=null) stmt.close();
-		if(con!=null) con.close();
-	}catch(Exception e1){
-		e1.printStackTrace();
-	}
-}
 
+String n=request.getParameter("name");
+
+		if (n==null) {
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				out.println("<tr>");
+				out.println("<td>" + rs.getInt("employee_id") + "</td>");
+				out.println("<td>" + rs.getString("emp_name") + "</td>");
+				out.println("<td>" + rs.getFloat("salary") + "</td>");
+				out.println("<td>" + rs.getString("job_id") + "</td>");
+				out.println("</tr>");
+			}
+			out.println("<a href='form.html'>다시 검색하기</a>");
+		}else if(n!=null){
+			rs=stmt.executeQuery(sql2);
+		while (rs.next()) {
+			out.println("<tr>");
+			out.println("<td>" + rs.getInt("employee_id") + "</td>");
+			out.println("<td>" + rs.getString("emp_name") + "</td>");
+			out.println("<td>" + rs.getFloat("salary") + "</td>");
+			out.println("<td>" + rs.getString("job_id") + "</td>");
+			out.println("</tr>");
+		}
+		out.println("<a href='form.html'>다시 검색하기</a>");
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			if (rs != null)
+				rs.close();
+			if (stmt != null)
+				stmt.close();
+			if (con != null)
+				con.close();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	}
 
 %>
 
