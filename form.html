@@ -1,47 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-function check(){
-	var num1=parseInt(form.salary1.value);
-	var num2=parseInt(form.salary2.value);
-	if(num1>num2){
-		alert("ì•ìˆ«ìëŠ” ë’·ìˆ«ìë³´ë‹¤ ì‘ì•„ì•¼í•©ë‹ˆë‹¤.");
-		form.salary1.focus();
-		return false;
+	name_check = /^[a-zA-Z]$/;
+	num_check = /^[0-9]$/;
+	function check() {
+		if (form.input1.value == "") {
+			alert("µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			form.name.focus();
+			return false;
+		}
+// 		if (form.select.value == "name") {
+// 			if (!(name_check.test(form.input1.value))) {
+// 				alert("¿µ¹® ¼Ò,´ë¹®ÀÚ¸ª ÀÔ·ÂÇØ¾ßÇÕ´Ï´Ù.");
+// 				form.input1.value=="";
+// 				form.input1.focus();
+// 				return false;
+// 			}
+// 		} else if (form.select.value == "salary") {
+// 			if (!(num_check.test(form.input1.value))) {
+// 				alert("¼ıÀÚ¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+// 				form.input1.value=="";
+// 				form.input1.focus();
+// 				return false;
+// 			}
+// 			if (!(num_check.test(form.input2.value))) {
+// 				alert("¼ıÀÚ¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+// 				form.input2.value=="";
+// 				form.input2.focus();
+// 				return false;
+// 			}
+// 			if (parseInt(form.input1.value) > parseInt(form.input2.value)) {
+// 				alert("¾ÕÀÇ °ªÀÌ ´õ ÀÛ¾Æ¾ßÇÕ´Ï´Ù.");
+// 				form.input1.value = "";
+// 				form.input1.focus();
+// 				return false;
+// 			}
+			
+// 		}
+
+		return form.submit();
 	}
-	return form.submit();
-}
 </script>
 </head>
 <body>
-<form action="form1.jsp" name="form" method="post">
-<!-- <h2>ì°¾ê³ ì í•˜ëŠ” ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.</h2> -->
-<!-- ê²€ìƒ‰ì–´ ì…ë ¥<input type="text" name="name"> -->
-<!-- <input type="submit" value="ê²€ìƒ‰"> -->
-<!-- <input type="reset" value="ì·¨ì†Œ"> -->
-
-<!-- <h2>ì°¾ê³ ì í•˜ëŠ” ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.</h2> -->
-<!-- ê²€ìƒ‰ì–´ ì…ë ¥<input type="text" name="id"> -->
-<!-- <input type="submit" value="ê²€ìƒ‰"> -->
-<!-- <input type="reset" value="ì·¨ì†Œ"> -->
-
-<!-- <h2>ì›”ê¸‰ ë²”ìœ„ê²€ìƒ‰</h2> -->
-<!-- ê²€ìƒ‰ì–´ ì…ë ¥<br> -->
-<!-- <input type="text" name="salary1">ë¶€í„°<br> -->
-<!-- <input type="text" name="salary2">ê¹Œì§€ -->
-<!-- <input type="button" onclick="check()" value="ê²€ìƒ‰"> -->
-<!-- <input type="reset" value="ì·¨ì†Œ"> -->
-
-<select name="select">
-<option>ì„ íƒ</option>
-<option value="name">ì´ë¦„ê²€ìƒ‰</option>
-<option value="salary">ì›”ê¸‰ê²€ìƒ‰</option>
-</select>
-<input type="submit" value="ì„ íƒ">
-</form>
-
+	<h2>Á¤º¸°Ë»ö ±âÁØ ÀÔ·Â</h2>
+	<form action="ex0413_01.jsp" name="form" method="post">
+		<select name="select">
+			<option>¼±ÅÃ</option>
+			<option value="name">ÀÌ¸§À¸·Î °Ë»ö</option>
+			<option value="salary">¿ù±ŞÀ¸·Î °Ë»ö</option>
+		</select>
+		<h4>ÀÌ¸§ ¶Ç´Â ¿ù±Ş¹üÀ§ ÀÔ·Â</h4>
+		<input type="text" name="input1">¿¡¼­<br> <input
+			type="text" name="input2">±îÁö<br>
+		<h4>Á¤·Ä¹æ½Ä ¼±ÅÃ</h4>
+		<input type="radio" name="sort" value="emp_id_low">»ç¿ø¹øÈ£ Á¤¹æÇâÁ¤·Ä<br>
+		<input type="radio" name="sort" value="emp_id_high">»ç¿ø¹øÈ£ ¿ª¹æÇâÁ¤·Ä<br>
+		<input type="radio" name="sort" value="salary_low">¿ù±Ş Á¤¹æÇâÁ¤·Ä<br>
+		<input type="radio" name="sort" value="salary_high">¿ù±Ş ¿ª¹æÇâÁ¤·Ä<br>
+		<input type="button" onclick="check()" value="°Ë»ö">
+	</form>
 </body>
 </html>
