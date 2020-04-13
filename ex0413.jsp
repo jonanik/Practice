@@ -9,10 +9,10 @@
     Statement stmt;
     ResultSet rs;
     
-    String id;
-    String pw;
-    String name;
-    String phone;
+    int imployee_id;
+    String emp_name;
+    float salary;
+    String job_id;
     
     %>
 <!DOCTYPE html>
@@ -31,10 +31,10 @@ tr,th,td{border:1px solid black;}
 <h2>회원 정보</h2>
 <table>
 <tr>
-<th>아이디</th>
-<th>패스워드</th>
-<th>이름</th>
-<th>전화번호</th>
+<th>사원번호</th>
+<th>사원이름</th>
+<th>월급</th>
+<th>부서명</th>
 </tr>
 <%
 request.setCharacterEncoding("utf-8");
@@ -43,18 +43,22 @@ try{
 	Class.forName("oracle.jdbc.driver.OracleDriver");//톰캣을 jdbc에 연결한다.
 	con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","ora_user","1234");//jdbc를 오라클에 연결한다.
 	stmt=con.createStatement();//statement 연결
-	String in1=request.getParameter("name");
-	String in2=request.getParameter("id");
+	String in1=request.getParameter("salary1");
+	String in2=request.getParameter("salary2");
+	
 	out.println(in1+"<br>");
-	String sql="select * from member where name like '%"+in1+"%' order by id desc";
-	String sql2="select * from member where id= '"+in2+"'";
-	rs=stmt.executeQuery(sql);
+	out.println(in2+"<br>");
+	
+	String sql="select employee_id,emp_name,salary,job_id from employees where salary between "+in1+" and "+ in2+" order by employee_id asc";	
+	String sql2="select employee_id,emp_name,salary,job_id from employees where salary >="+in1+"and salary<="+ in2+" order by employee_id asc";	
+// 	String sql2="select * from member where id= '"+in2+"'";
+	rs=stmt.executeQuery(sql2);
 	while(rs.next()){
 		out.println("<tr>");
-		out.println("<td>"+rs.getString("id")+"</td>");
-		out.println("<td>"+rs.getString("pw")+"</td>");
-		out.println("<td>"+rs.getString("name")+"</td>");
-		out.println("<td>"+rs.getString("phone")+"</td>");
+		out.println("<td>"+rs.getInt("employee_id")+"</td>");
+		out.println("<td>"+rs.getString("emp_name")+"</td>");
+		out.println("<td>"+rs.getFloat("salary")+"</td>");
+		out.println("<td>"+rs.getString("job_id")+"</td>");
 		out.println("</tr>");
 	}
 	out.println("<a href='form.html'>다시 검색하기</a>");
