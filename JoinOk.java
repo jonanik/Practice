@@ -65,24 +65,29 @@ public class JoinOk extends HttpServlet {
 			if (result == 1) {
 				response.sendRedirect("joinResult.jsp");
 			} else {
+				
 				PrintWriter writer = response.getWriter();
 				writer.println("<html><head> <meta charset='utf-8'></head>");
 				writer.println("<body>");
-				writer.println("<script>alert('저장이 되지 않았습니다. 다시입력해주세요.')</script>");
+				writer.println("<script>alert('저장이 되지 않았습니다. 다시입력해주세요.');");
 				writer.println("location.href('join.html');</script>");
 				writer.println("</body></html>");
-
+				writer.close();
 			}
 
 		} catch (Exception e) {
+			
+			response.sendRedirect("join.html");
 			// 에러발생
-			e.printStackTrace();
-			PrintWriter writer = response.getWriter();
-			writer.println("<html><head> <meta charset='utf-8'></head>");
-			writer.println("<body>");
-			writer.println("<script>alert('저장이 되지 않았습니다. 다시입력해주세요.')</script>");
-			writer.println("location.href('join.html');</script>");
-			writer.println("</body></html>");
+//			e.printStackTrace();
+//			response.setContentType("text/html;charset=utf-8");//ppt 5-2장에 내용있음 서블릿이면 무조건
+//			PrintWriter writer = response.getWriter();
+//			writer.println("<html><head> <meta charset='utf-8'></head>");
+//			writer.println("<body>");
+//			writer.println("<script>alert('저장이 되지 않았습니다. 다시입력해주세요.')</script>");
+//			writer.println("location.href('join.html');</script>");
+//			writer.println("</body></html>");
+//			writer.close();
 
 		} finally {
 			try {

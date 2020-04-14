@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%!
+    String user_id,user_name,authUser;
     
+    %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -73,7 +76,11 @@
     </style>
   </head>
   <body>
-
+<%
+authUser=(String)session.getAttribute("authUser");
+user_name=(String)session.getAttribute("user_name");
+user_id=(String)session.getAttribute("user_name");
+if(authUser==null){%>
   <!-- 로그인 안된 페이지 -->
     <div class="container">
       <div class="log_area">
@@ -88,19 +95,21 @@
         </div>
       </div>
     </div>
-  }
-  
-
-   
+ <%}else{ %> 
     <!-- 로그인 된 페이지 -->
      <div class="container">
       <div class="log_area2">
-        <span id="nick_area"></span>닉네임<span> 님</span>
-        <br>회원정보수정
-        <button class="outBtn"><a href="">회원정보 수정</a></button><br>
-        <button class="outBtn"><a href="">로그아웃</a></button>
+        <span id="nick_area"></span><span><%=user_name%>님 환영합니다.</span>
+        <br><a href="modify.jsp">회원정보수정</a>
+<!--         <button class="outBtn"><a href="modify.jsp">회원정보 수정</a></button><br> -->
+        <button class="outBtn"><a href="logout.jsp">로그아웃</a></button>
       </div>
     </div>
+		
+<%} %>
+  
+
+   
  
     
   </body>

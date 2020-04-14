@@ -3,11 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+id_check=(/(?=.*[a-z])(?=.*[0-9].*$)/);
+pw_check=(/(?=.*[0-9]).*$/);
+name_check=(/(?=.*[가-힣]).*$/);
+function check(){
+	if(join.id.value==""){
+		alert("데이터를 입력해주세요.");
+		join.id.focus();
+		return false;
+	}
+	if(!(id_check.test(join.id.value))){
+		alert("아이디는 영소문자 숫자 한글자 이상 입력해주세요.");
+		join.id.value="";
+		join.id.focus();
+		return false;	
+	}
+	if(!(pw_check.test(join.pw.value))){
+		alert("비밀번호는 숫자 한글자 이상 입력해주세요.");
+		join.pw.value="";
+		join.pw.focus();
+		return false;
+}
+	if(!(join.pw.value==join.pw2.value)){
+		alert("비밀번호를 다시 확인해주세요.");
+		join.pw.focus();
+		return false;
+	}
+	if(!(name_check.test(join.name.value))){
+		alert("이름은 한글로 입력해주세요.");
+		join.name.value="";
+		join.name.focus();
+		return false;
+	}
+	return join.submit();
+}
+
+</script>
 </head>
 <body>
 	<form action="JoinOk" name="join" method="post">
 		<h2>회원가입</h2>
-		아이디 : <input type="text" name="id" placeholder="영문 숫자만 가능합니다." autofocus><br>
+		아이디 : <input type="text" name="id" ><br>
 		 패스워드: <input
 			type="password" name="pw"><br> 
 			패스워드확인: <input
@@ -28,7 +65,8 @@
 		<label for="man">남자</label>
 		<input type="radio" name="gender" value="female" id="woman">
 		<label for="woman">여자</label><br>
-		<input type="submit" value="회원가입">  
+		
+		<input type="button" onclick="check()" value="회원가입">  
 		<input type="reset" value="취소">
 		</form>
 </body>
