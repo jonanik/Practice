@@ -1,37 +1,43 @@
-package com.javalec.ex;
+package home.javalec.ex;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import javafx.util.converter.DateStringConverter;
+
 public class MemberDao {
 
 	private MemberDao() {
-		
+
 	}
-	//MemberDao mdao=new MemberDao();
-	private static MemberDao instance= new MemberDao();
-	
+
+	private static MemberDao mdao = new MemberDao();
+
 	public static MemberDao getInstance() {
-		return instance;
+
+		return mdao;
 	}
-	
-	//member 여러개
-	public ArrayList<MemberDto> getMember(){
+
+	public ArrayList<MemberDto> mem(){
+		ArrayList<MemberDto> list= new ArrayList<MemberDto>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberDto mdto=null;
 		
-		ArrayList<MemberDto> list=new ArrayList<MemberDto>();
+		String sql = "select * from mem";
+		String id,pw,name,address;
+		Timestamp birth;
+		int check = 0;
 		
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		MemberDto mdto= null;
-		
-		String sql="select * from b_member";
 		
 		try {
 			Context context=new InitialContext();
@@ -40,51 +46,49 @@ public class MemberDao {
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			
-				while(rs.next()) {
-					//db에서 데이터 읽어와서 dto에 입력
-					mdto=new MemberDto();
-					mdto.setId(rs.getString("id"));
-					mdto.setPw(rs.getString("pw"));
-					mdto.setName(rs.getString("name"));
-					mdto.setEmail(rs.getString("email"));
-					mdto.setAddress(rs.getString("address"));
-					mdto.setB_date(rs.getTimestamp("b_date"));
-					
-					list.add(mdto);
-				}
+			while(rs.next()) {
+				id=rs.getString("id");
+				pw=rs.getString("pw");
+				name=rs.getString("name");
+				address=rs.getString("address");
+				birth=rs.getTimestamp("birth");
+				
+				mdto= new MemberDto(id, pw, name, address, birth);
+				list.add(mdto);
+			}
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(con!=null) con.close();
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 		}
-		
-		
-		
 		
 		return list;
 	}
 	
 	
-	
-	
-	
-	
-	
-	//member 1개
-	public MemberDto getMember(String id) {
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		MemberDto mdto= null;
+	public MemberDto onemem(String id){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberDto mdto=null;
 		
-		String sql="select * from b_member where id=?";
+		String sql = "select * from mem where id=?";
+		String pw,name,address;
+		Timestamp birth;
+		int check = 0;
+		
 		
 		try {
 			Context context=new InitialContext();
@@ -94,95 +98,97 @@ public class MemberDao {
 			pstmt.setString(1,id);
 			rs=pstmt.executeQuery();
 			
-				while(rs.next()) {
-					
-					//db에서 데이터 읽어와서 dto에 입력
-					mdto=new MemberDto();
-					mdto.setId(rs.getString("id"));
-					mdto.setPw(rs.getString("pw"));
-					mdto.setName(rs.getString("name"));
-					mdto.setEmail(rs.getString("email"));
-					mdto.setAddress(rs.getString("address"));
-					mdto.setB_date(rs.getTimestamp("b_date"));
-				}
+			while(rs.next()) {
+				id=rs.getString("id");
+				pw=rs.getString("pw");
+				name=rs.getString("name");
+				address=rs.getString("address");
+				birth=rs.getTimestamp("birth");
+				
+				mdto= new MemberDto(id, pw, name, address, birth);
+				
+			}
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(con!=null) con.close();
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 		}
 		
-		
 		return mdto;
+		
 	}
 	
 	
-	
-	
-	
-	//아이디,패스워드 체크 메소드
-	public int userCheck(String id,String pw) {
-		int check=0;//db에서 결과 리턴값
-		
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select id,pw from b_member where id=?";
-		String ch_id,ch_pw;
-		
+	public int loginCheck(String id, String pw) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select id,pw from mem where id=?";
+
+		String idCheck;
+		String pwCheck;
+		int check = 0;
+
 		try {
-			Context context=null;
-			DataSource ds=null;
+			Context context;
+			DataSource ds;
 			
-			context=new InitialContext();
-			ds=(DataSource)context.lookup("java:comp/env/jdbc/Oracle11g");
-			con=ds.getConnection();
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,id);
-			rs=pstmt.executeQuery();
+			context = new InitialContext();
+			ds = (DataSource) context.lookup("java:comp/env/jdbc/Oracle11g");
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				System.out.println("rs데이터 읽음:"+rs);
-				//데이터가 있을 경우
+			if (rs.next()) {
 				
-					ch_id=rs.getString("id");
-					ch_pw=rs.getString("pw");
-					
-					if(ch_pw.equals(pw)) {
-						check=1;//패스워드 일치
-					}else {
-						check=0;//패스워드 불일치
+				idCheck = rs.getString("id");
+				pwCheck = rs.getString("pw");
+				if (id.equals(idCheck)) {
+					if(pw.equals(pwCheck)) {
+						check=1;
 					}
-				
-				
+				} else if (!(id.equals(idCheck))) {
+					
+					check=-1;
+				} else if(!(pw.equals(pwCheck))) {
+					
+					check=-2;
+				}
 			}else {
-				//데이터가 없을 경우
-				check=-1;//id가 존재하지 않음
+				System.out.println("������ �����ϴ�.");
+				check=0;
 			}
-//			
-				
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(con!=null) con.close();
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 		}
-		
-		
-		
-		return check; //일치=1,불일치=0,존재한지 않음 셋중 하나임=-1
-		
-	}//userCheck
-	
-}//class
+
+		return check;
+	}
+
+}

@@ -1,54 +1,92 @@
-<%@page import="com.javalec.ex.MemberDto"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.javalec.ex.MemberDao"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!--     ì„¸ì…˜ì´ ìˆëŠ”ì§€ í™•ì¸ ì—†ìœ¼ë©´ main.jspë¡œ ë³´ëƒ„ -->
-    <%
-    if(session.getAttribute("authUser")==null){%>
-    	<script type="text/javascript">
-    	alert("ë¡œê·¸ì¸ì„ í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤. ë¡œê·¸ì¸ì„ í•´ì£¼ì„¸ìš”.");
-    	location.href="login.jsp"
-    	</script> 	
-   <%}%>    
-  <%
-  ArrayList<MemberDto> list=new ArrayList<MemberDto>();
-  String id=(String)session.getAttribute("id");
-  MemberDao mdao=MemberDao.getInstance();
-  list=mdao.getMember();
-  
-  %> 
+<%@page import="java.sql.Timestamp"%>
+<%@page import="home.javalec.ex.MemberDto"%>
+<%@page import="home.javalec.ex.MemberDao"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%!String pw, name, address;
+	Timestamp birth;
+	%>
+
+<%
+	String id = (String) session.getAttribute("userId");
+	if (id == null) {
+%>
+<script type="text/javascript">
+	alert("·Î±×ÀÎÀÌ µÇÁö ¾Ê¾Ò½À´Ï´Ù. ·Î±×ÀÎÇØÁÖ¼¼¿ä.");
+	location.href = "login.jsp"
+</script>
+<%
+	} else if (!(id == null)) {
+		MemberDao mdao = MemberDao.getInstance();
+		MemberDto mdto = mdao.onemem(id);
+
+		id = mdto.getId();
+		pw = mdto.getPw();
+		name = mdto.getName();
+		address = mdto.getAddress();
+		birth = mdto.getBirth();
+
+	}
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-<h2>ê´€ë¦¬ì í˜ì´ì§€</h2>
-<p>ê´€ë¦¬ìë‹˜ ë¡œê·¸ì¸í•˜ì…¨ìŠµë‹ˆë‹¤.</p>
-<table border="1">
-<tr>
-<th>ì•„ì´ë””</th>
-<th>íŒ¨ìŠ¤ì›Œë“œ</th>
-<th>ì´ë¦„</th>
-<th>ì´ë©”ì¼</th>
-<th>ì£¼ì†Œ</th>
-<th>ê°€ì…ì¼</th>
-</tr>
-<%
-for(int i=0; i<list.size();i++){
-	MemberDto mdto=(MemberDto)list.get(i);
-%>
-<tr>
-<td><%=mdto.getId() %></td>
-<td><%=mdto.getPw() %></td>
-<td><%=mdto.getName() %></td>
-<td><%=mdto.getEmail() %></td>
-<td><%=mdto.getAddress() %></td>
-<td><%=mdto.getB_date() %></td>
-</tr>
-<%} %>
-</table>
+	<h2>°ü¸®ÀÚ´Ô È¯¿µÇÕ´Ï´Ù!</h2>
+	<h3>¸â¹ö ÇÑ¸í Ãâ·Â</h3>
+	<table border="1">
+		<tr>
+			<th>¾ÆÀÌµğ</th>
+			<th>ÆĞ½º¿öµå</th>
+			<th>ÀÌ¸§</th>
+			<th>ÁÖ¼Ò</th>
+			<th>»ı³â¿ùÀÏ</th>
+		</tr>
+		<tr>
+			<td><%=id%></td>
+			<td><%=pw%></td>
+			<td><%=name%></td>
+			<td><%=address%></td>
+			<td><%=birth%></td>
+
+		</tr>
+	</table>
+	<br>
+	<h3>¸ğµç ¸â¹ö Ãâ·Â</h3>
+	<table border="1">
+		<tr>
+			<th>¾ÆÀÌµğ</th>
+			<th>ÆĞ½º¿öµå</th>
+			<th>ÀÌ¸§</th>
+			<th>ÁÖ¼Ò</th>
+			<th>»ı³â¿ùÀÏ</th>
+		</tr>
+		<%
+		MemberDao mdao = MemberDao.getInstance();
+		MemberDto mdto = mdao.onemem(id);
+		ArrayList<MemberDto> list = new ArrayList<MemberDto>();
+		list=mdao.mem();
+		
+		for(int i=0; i<list.size();i++){
+			mdto=list.get(i);
+		
+		%>
+		
+		<tr>
+			<td><%=mdto.getId()%></td>
+			<td><%=mdto.getPw()%></td>
+			<td><%=mdto.getName()%></td>
+			<td><%=mdto.getAddress()%></td>
+			<td><%=mdto.getBirth()%></td>
+		</tr>
+		<%} %>
+	</table>
+	<button onclick="location.href='logout.jsp'">·Î±×¾Æ¿ô</button>
 </body>
 </html>

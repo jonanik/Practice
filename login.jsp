@@ -1,25 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%
-    if(session.getAttribute("authUser")!=null){%>
-    	<jsp:forward page="main.jsp"/>
-    
-   
-   <%} %> 
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/custom.js"></script>
 </head>
 <body>
 <form action="login_ok.jsp" name="login" method="post">
-<label for="id">ì•„ì´ë””</label><input type="text" name="id" id="id"><br>
-<label for="pw">íŒ¨ìŠ¤ì›Œë“œ</label><input type="password" name="pw" id="pw"><br>
-<input type="button" onclick="login_check()" value="ë¡œê·¸ì¸">
-<input type="button" onclick="javascript:window.location='join.jsp" value="íšŒì›ê°€ì…"> 
-
+¾ÆÀÌµğ<input type="text" name="id">
+ÆĞ½º¿öµå<input type="password" name="pw">
+<input type="button" onclick="loginCheck()" value="·Î±×ÀÎ">
 </form>
 </body>
 </html>
