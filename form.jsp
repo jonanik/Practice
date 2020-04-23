@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-<form action="ex_05.jsp">
-ì´ë¦„<input type="text" name="name"><br>
-êµ­ì–´<input type="text" name="kor"><br>
-ì˜ì–´<input type="text" name="eng"><br>
-ìˆ˜í•™<input type="text" name="math"><br>
-<input type="submit" value="ì„±ì ì „ì†¡">
+<form action="home5.jsp">
+ÀÌ¸§<input type="text" name="name"><br>
+±¹¾î<input type="text" name="kor"><br>
+¿µ¾î<input type="text" name="eng"><br>
+¼öÇĞ<input type="text" name="math"><br>
+<input type="submit" value="¼ºÀûÀü¼Û">
 </form>
 </body>
 </html>
