@@ -7,11 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>각 페이지 상단 메뉴 연결</h2>
-<a href="insert.do">insert</a><br>
-<a href="update.do">update</a><br>
-<a href="select.do">select</a><br>
-<a href="delete.do">delete</a><br>
-
+<h2>uri: ${requestScope.insert_uri }</h2>
+<h2>contextPath: ${requestScope.insert_conPath }</h2>
+<h2>파일명: ${requestScope.insert_com }</h2>
 </body>
 </html>

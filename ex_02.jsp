@@ -1,9 +1,9 @@
+<%@page import="jsp_0424.Login"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <jsp:useBean id="member" class="com.javalec.ex.MemberInfo" scope="page"/>
-    <jsp:setProperty property="name" name="member" value="홍길동"/>
-    <jsp:setProperty property="id" name="member" value="admin"/>
-    <jsp:setProperty property="pw" name="member" value="1234"/>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +11,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>빈태그 사용</h2>
-<jsp:getProperty property="name" name="member"/><br>
-<jsp:getProperty property="id" name="member"/><br>
-<jsp:getProperty property="pw" name="member"/><br>
-
-<h2>EL태그</h2>
-${member.name }<br>
-${member.id }<br>
-${member.pw }<br>
+ <%
+ ArrayList list=new ArrayList();
+	Login log=null;
+    for(int i=0; i<5;i++){
+    	log=new Login();
+    	log.setNum(i+1);
+    	log.setId("admin"+i);//admin0,admin1,admin2,admin3....
+    	log.setPw("abc"+i);//abc0,abc1,.....
+    	list.add(log);
+    }
+    
+    request.setAttribute("test",list);//1
+ 
+ request.setAttribute("user_id","admin");//2
+ request.setAttribute("user_pw","1234");//3
+ request.setAttribute("user_name","홍길동");//4
+ 
+ response.sendRedirect("result.jsp");
+ %>
 </body>
 </html>
