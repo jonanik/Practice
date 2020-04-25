@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="insert.do">insert</a>
-<a href="select.do">insert</a>
-<a href="delete.do">insert</a>
-<a href="update.do">insert</a>
+insert:<a href="insert.do">insert</a><br>
+select:<a href="select.do">select</a><br>
+delete:<a href="delete.do">delete</a><br>
+update:<a href="update.do">update</a><br>
+
 </body>
 </html>

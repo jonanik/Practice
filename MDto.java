@@ -4,11 +4,11 @@ import java.sql.Timestamp;
 
 public class MDto {
 
-	MDto(){
+public	MDto(){
 		
 	}
 	
-	MDto(String id,String pw,String name,Timestamp b_date){
+public	MDto(String id,String pw,String name,Timestamp b_date){
 		this.id=id;
 		this.pw=pw;
 		this.name=name;
