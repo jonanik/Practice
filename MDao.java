@@ -1,73 +1,49 @@
-package home0419_01;
+package home.java.Dao;
 
-import java.lang.reflect.Array;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
-import java.util.ArrayList;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import home.java.Dto.MDto;
 
 public class MDao {
 
-	public MDao(){
-	try {
-		Class.forName("oralce.jdbc.driver.OracleDriver");
-	} catch (Exception e) {
-		e.printStackTrace();
-	}finally {
-		try {
-			
-		} catch (Exception e2) {
-			e2.printStackTrace();
-		}
+private	MDao(){
+		
 	}
-}
 	
-	public ArrayList<MDto> list=new ArrayList<MDto>();
-	Connection con;
-	PreparedStatement pstmt;
+	private static MDao mdao=new MDao();
+	
+	public MDao instance() {
+		return mdao;
+	}
+
+	Connection con=null;
+	PreparedStatement pstmt=null;
 	ResultSet rs;
-	
-	int mNum;
-	String id,pw,name,address;
-	Timestamp birth,mDate;
+	MDto mdto;
 	String sql;
 	
-	public ArrayList<MDto> mlist(){
+	
+	
+	
+	
+	public Connection getConnection() {
+		
 		try {
-			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","ora_user1","1234");
-			sql="select * from member6";
-			pstmt=con.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				mNum=rs.getInt("mNum");
-				id=rs.getString("id");
-				pw=rs.getString("pw");
-				name=rs.getString("name");
-				address=rs.getString("address");
-				birth=rs.getTimestamp("birth");
-				mDate=rs.getTimestamp("mDate");			
-				
-				
-				MDto mdto=new MDto(mNum, id, pw, name, address, birth, mDate);
-				list.add(mdto);
-			}
-			
-			
+			Context context=new InitialContext();
+			DataSource ds=(DataSource)context.lookup("java:comp/env/jdbc/Oracle11g");
+			con=ds.getConnection();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(con!=null) con.close();
-				
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 		}
-		return list;
+		
+		return con;
 	}
+	
 }
