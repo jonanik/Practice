@@ -1,16 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-insert:<a href="insert.do">insert</a><br>
-select:<a href="select.do">select</a><br>
-delete:<a href="delete.do">delete</a><br>
-update:<a href="update.do">update</a><br>
-
+<h2><a href="select.do">list출력하기</a></h2>
 </body>
 </html>

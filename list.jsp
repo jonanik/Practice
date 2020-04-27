@@ -1,15 +1,6 @@
-
-<%@page import="com.javalec.ex.boardDto"%>
-<%@page import="com.javalec.ex.boardDao"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%
- 	boardDao bdao=boardDao.getInstance();
-   boardDto bdto=new boardDto();
-   ArrayList<boardDto> list=new ArrayList<boardDto>();
-   list=bdao.getBoards(bdto);
-   %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,27 +10,25 @@
 <body>
 <table border="1">
 <tr>
-<th>번호</th>
-<th>제목</th>
-<th>내용</th>
+<th>NO.</th>
+<th>Title</th>
+<th>작성일</th>
 <th>작성자</th>
-<th>파일 다운로드</th>
+<th>조회수</th>
 </tr>
-
-<%for(int i=0; i<list.size();i++){
-bdto=list.get(i);
-%>
+<c:forEach var="list" items="${list }">
 <tr>
-<td><a href="update.jsp?b_num=<%=bdto.getB_num() %>"><%=bdto.getB_num() %></a></td>
-<td><a href="modify.jsp?b_title=<%=bdto.getB_title() %>"><%=bdto.getB_title() %></a></td>
-<td><%=bdto.getB_content() %></td>
-<td><%=bdto.getB_user() %></td>
-<td><a href="upload/<%=bdto.getB_file() %>"><%=bdto.getB_file() %></a></td>
+<td>${list.bId}</td>
+<td>${list.bTitle}</td>
+<td>${list.bDate}</td>
+<td>${list.bName}</td>
+<td>${list.bHit}</td>
+
 </tr>
 
-<%} %>
+</c:forEach>
 </table>
-<button onclick="javascript:location.href='board.jsp'">글쓰기</button>
-<button onclick="location.href='modify.jsp'">정보수정</button>
+
+
 </body>
 </html>
