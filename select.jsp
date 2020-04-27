@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,29 +8,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>파일이름:${requestScope.sel_address}</h2>
 <table border="1">
 <tr>
-<th>아이디</th>
-<th>패스워드</th>
-<th>이름</th>
-<th>가입날짜</th>
+<th>No.</th>
+<th>제목</th>
+<th>내용</th>
+<th>작성자</th>
+<th>작성일</th>
+<th>조회수</th>
 </tr>
-<c:forEach var="memList" items="${memList}">
+<c:forEach var="print" items="${list }">
+
 <tr>
-<td>${memList.getId()}</td>
-<td>${memList.getPw()}</td>
-<td>${memList.getName()}</td>
-<td>${memList.getB_date()}</td>
+<td>${print.num }</td>
+<td><a href="content.do?num=${print.num}">${print.title }</a></td>
+<td>${print.content }</td>
+<td>${print.name}</td>
+<td>${print.wdate }</td>
+<td>${print.hit }</td>
 </tr>
-
-
 </c:forEach>
-
-
-
 </table>
-
 
 </body>
 </html>
