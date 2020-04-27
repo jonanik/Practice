@@ -3,13 +3,21 @@ package com.javalec.ex.BDto;
 import java.sql.Timestamp;
 
 public class BDto {
+	int bId;
+	String bName;
+	String bTitle;
+	String bContent;
+	Timestamp bDate;
+	int bHit;
+	int bGroup;
+	int bStep;
+	int bIndent;
 
-	public BDto(){
+public	BDto(){
 		
 	}
 	
-public BDto(int bId,String bName,String bTitle,String bContent,
-		Timestamp bDate,int bHit,int bGroup,int bStep,int bIndent ){
+public	BDto(int bId,String bName,String bTitle,String bContent,Timestamp bDate,int bHit,int bGroup,int bStep,int bIndent){
 		this.bId=bId;
 		this.bName=bName;
 		this.bTitle=bTitle;
@@ -20,17 +28,6 @@ public BDto(int bId,String bName,String bTitle,String bContent,
 		this.bStep=bStep;
 		this.bIndent=bIndent;
 	}
-	
-	
-	int bId;
-	String bName;
-	String bTitle;
-	String bContent;
-	Timestamp bDate;
-	int bHit;
-	int bGroup;
-	int bStep;
-	int bIndent;
 	
 	public int getbId() {
 		return bId;

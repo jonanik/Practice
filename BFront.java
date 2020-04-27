@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.ex.BCommand.BCommand;
-import com.javalec.ex.BCommand.BListCommand;
+import com.javalec.ex.BCommand.BListcommand;
+import com.javalec.ex.BContentCommand.BContentcommand;
 
 
 @WebServlet("*.do")
@@ -20,7 +21,7 @@ public class BFront extends HttpServlet {
     
     public BFront() {
         super();
-        
+       
     }
 
 	
@@ -35,23 +36,33 @@ public class BFront extends HttpServlet {
 		actionDo(request,response);
 	}
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("actionDo로 들어옴");
-		String viewPage=null;
-		BCommand bcom;
+		System.out.println("actionDo 호출");
+		String pageView=null;
+		BCommand bcom=null;
+		
+		//페이지 확인
 		String uri=request.getRequestURI();
 		String conPath=request.getContextPath();
 		String com=uri.substring(conPath.length());
 		
-		if(com.equals("/select.do")) {
-			bcom=new BListCommand();
+		if(com.equals("/list.do")) {
+			bcom=new BListcommand();
 			bcom.execute(request, response);
-			viewPage="list.jsp";
-		}else {
-			
+			pageView="list.jsp";
+		}else if(com.equals("/content_view.do")) {
+			bcom=new BContentcommand();
+			bcom.execute(request, response);
+			pageView="content_view.jsp";
+		}else if(com.equals("/write.do")){
+//			bcom=new BWritecommand();
+			bcom.execute(request, response);
+			pageView="list.do";
+		}else if(com.equals("/write_view.do")) {
+			pageView="write_view.jsp";
 		}
 		
-		RequestDispatcher dispatcher=request.getRequestDispatcher(viewPage);
+		//forward
+		RequestDispatcher dispatcher=request.getRequestDispatcher(pageView);
 		dispatcher.forward(request, response);
 	}
-
 }
