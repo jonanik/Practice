@@ -1,4 +1,4 @@
-package home.java.ex.Dto;
+package practice.java.ex.Dto;
 
 import java.sql.Timestamp;
 
@@ -8,67 +8,99 @@ public class Dto {
 		
 	}
 	
-	public Dto(int num,String name,String title,String content,Timestamp wdate,int hit) {
-		this.num=num;
-		this.name=name;
-		this.title=title;
-		this.content=content;
-		this.wdate=wdate;
-		this.hit=hit;
+	public Dto(int bid,String bname,String btitle,String bcontent,Timestamp bdate,
+			int bhit,int bgroup,int bstep,int bindent) {
+		this.bid=bid;
+		this.bname=bname;
+		this.btitle=btitle;
+		this.bcontent=bcontent;
+		this.bdate=bdate;
+		this.bhit=bhit;
+		this.bgroup=bgroup;
+		this.bstep=bstep;
+		this.bindent=bindent;
 	}
 	
-private	int num;
-private	String name;
-private	String title;
-private	String content;
-private	Timestamp wdate;
-private	int hit;
-	public int getNum() {
-		return num;
+	int bid;
+	String bname;
+	String btitle;
+	String bcontent;
+	Timestamp bdate;
+	int bhit;
+	int bgroup;
+	int bstep;
+	int bindent;
+	
+	public int getBid() {
+		return bid;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setBid(int bid) {
+		this.bid = bid;
 	}
 
-	public String getName() {
-		return name;
+	public String getBname() {
+		return bname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setBname(String bname) {
+		this.bname = bname;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getBtitle() {
+		return btitle;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBtitle(String btitle) {
+		this.btitle = btitle;
 	}
 
-	public String getContent() {
-		return content;
+	public String getBcontent() {
+		return bcontent;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setBcontent(String bcontent) {
+		this.bcontent = bcontent;
 	}
 
-	public Timestamp getWdate() {
-		return wdate;
+	public Timestamp getBdate() {
+		return bdate;
 	}
 
-	public void setWdate(Timestamp wdate) {
-		this.wdate = wdate;
+	public void setBdate(Timestamp bdate) {
+		this.bdate = bdate;
 	}
 
-	public int getHit() {
-		return hit;
+	public int getBhit() {
+		return bhit;
 	}
 
-	public void setHit(int hit) {
-		this.hit = hit;
+	public void setBhit(int bhit) {
+		this.bhit = bhit;
+	}
+
+	public int getBgroup() {
+		return bgroup;
+	}
+
+	public void setBgroup(int bgroup) {
+		this.bgroup = bgroup;
+	}
+
+	public int getBstep() {
+		return bstep;
+	}
+
+	public void setBstep(int bstep) {
+		this.bstep = bstep;
+	}
+
+	public int getBindent() {
+		return bindent;
+	}
+
+	public void setBindent(int bindent) {
+		this.bindent = bindent;
 	}
 	
 	

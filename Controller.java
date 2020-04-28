@@ -1,4 +1,4 @@
-package home.java.ex;
+package practice.java.ex.controller;
 
 import java.io.IOException;
 
@@ -9,54 +9,84 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import home.java.ex.Command.CommandInter;
-import home.java.ex.Command.ContentCommand;
-import home.java.ex.Command.ListCommand;
+import practice.java.ex.command.DeleteCommand;
+import practice.java.ex.command.Interface;
+import practice.java.ex.command.ListCommand;
+import practice.java.ex.command.ModifyCommand;
+import practice.java.ex.command.ReplyCommand;
+import practice.java.ex.command.ReplyViewCommend;
+import practice.java.ex.command.WriteCommand;
+import practice.java.ex.command.contentViewCommand;
+import practice.java.ex.command.modifyViewCommand;
 
 
 @WebServlet("*.do")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+   
     public Controller() {
         super();
-       
+        
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doGet¿∏∑Œ µÈæÓø»");
+		System.out.println("doGetÔøΩÏëùÊø°ÔøΩ ÔøΩÎ±æÔøΩÎº±ÔøΩÏÉÇ");
 		actionDo(request,response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doPost∑Œ µÈæÓø»");
+		System.out.println("doPostÊø°ÔøΩ ÔøΩÎ±æÔøΩÎº±ÔøΩÏÉÇ");
 		actionDo(request,response);
 	}
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("actionDo∑Œ µÈæÓø»");
+		request.setCharacterEncoding("utf-8");
+		System.out.println("actionDoÊø°ÔøΩ ÔøΩÎ±æÔøΩÎº±ÔøΩÏÉÇ");
 		String viewPage=null;
 		String uri=request.getRequestURI();
-		String conPath=request.getContextPath();
-		String com=uri.substring(conPath.length());
-		CommandInter comm;
+		String conpath=request.getContextPath();
+		String com=uri.substring(conpath.length());
+		Interface in;
 		
-		if(com.equals("/select.do")) {
-			comm=new ListCommand();
-			comm.execute(request, response);
-			viewPage="select.jsp";
-		}else if(com.equals("/content.do")) {
-			comm=new ContentCommand();
-			comm.execute(request, response);
-			viewPage="content.jsp";
+		
+		if(com.equals("/list.do")) {
+			in=new ListCommand();
+			in.execute(request, response);
+			viewPage="list.jsp";
+		}else if(com.equals("/contentView.do")) {
+			in=new contentViewCommand();
+			in.execute(request, response);
+			viewPage="contentView.jsp";
+		}else if(com.equals("/write.do")) {
+			in=new WriteCommand();
+			in.execute(request, response);
+			viewPage="list.do";
+		}else if(com.equals("/delete.do")) {
+			in=new DeleteCommand();
+			in.execute(request, response);
+			viewPage="list.do";
+		}else if(com.equals("/modifyView.do")) {
+			in=new modifyViewCommand();
+			in.execute(request, response);
+			viewPage="modify.jsp";
+		}else if(com.equals("/modify.do")) {
+			in=new ModifyCommand();
+			in.execute(request, response);
+			viewPage="list.do";
+		}else if(com.contentEquals("/replyView.do")) {
+			in=new ReplyViewCommend();
+			in.execute(request, response);
+			viewPage="replyView.jsp";
+		}else if(com.contentEquals("/reply.do")) {
+			in=new ReplyCommand();
+			in.execute(request, response);
+			viewPage="list.do";
 		}
-		
+		request.setCharacterEncoding("utf-8");
 		RequestDispatcher dispatcher=request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 		
 	}
-	
-	
 }

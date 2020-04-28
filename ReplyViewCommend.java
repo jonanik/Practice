@@ -1,23 +1,22 @@
 package practice.java.ex.command;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import practice.java.ex.Dao.Dao;
 import practice.java.ex.Dto.Dto;
 
-public class ListCommand implements Interface {
+public class ReplyViewCommend implements Interface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		int bid=Integer.parseInt(request.getParameter("bid"));
 		Dao dao=new Dao();
-		ArrayList<Dto> list=new ArrayList<Dto>();
-		
-		list=dao.List();
-		request.setAttribute("list", list);
-		
+		Dto dto=new Dto();
+		dto=dao.getcontent(bid);
+		System.out.println(dto.getBtitle());
+		request.setAttribute("replyView", dto);
+
 	}
 
 }

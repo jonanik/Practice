@@ -1,4 +1,4 @@
-package home.java.ex.Dao;
+package practice.java.ex.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import home.java.ex.Dto.Dto;
+import org.apache.catalina.connector.Request;
+
+import practice.java.ex.Dto.Dto;
 
 public class Dao {
 
@@ -24,126 +26,244 @@ public	Dao(){
 		}
 		
 	}
-Context context=null;
-DataSource ds=null;
-
-Connection con=null;
-PreparedStatement pstmt=null;
-ResultSet rs=null;
-String sql=null;
-
-
-public void hit() {
 	
-}
-
-Dto dto=new Dto();
-ArrayList<Dto> list=new ArrayList<Dto>();
-int num,hit;
-String name,title,content;
-Timestamp wdate;
-
-
-public Dto content(int num) {
+	ArrayList<Dto> list =new ArrayList<Dto>();
 	
-	uphit(num);
+	Connection con;
+	PreparedStatement pstmt;
+	ResultSet rs;
+	DataSource ds;
+	Context context;
 	
-	try {
-		sql="select * from mvctable where num=?";
-		con=ds.getConnection();
-		pstmt=con.prepareStatement(sql);
-		pstmt.setInt(1, num);
-		rs=pstmt.executeQuery();
-		
-		if(rs.next()) {
-			num=rs.getInt("num");
-			name=rs.getString("name");
-			title=rs.getString("title");
-			content=rs.getString("content");
-			wdate=rs.getTimestamp("wdate");
-			hit=rs.getInt("hit");
-			dto=new Dto(num, name, title, content, wdate, hit);
-			
-			
-		}
-		
-		
-	} catch (Exception e) {
-		e.printStackTrace();
-	}finally {
+	Dto dto;
+	String sql;
+	String bname,btitle,bcontent;
+	Timestamp bdate;
+	int bid,bhit,bgroup,bstep,bindent;
+	
+	
+	
+	//寃뚯떆湲� �닔�젙
+	public void modify(int bid,String btitle,String bcontent) {
 		try {
-			if(rs!=null) rs.close();
-			if(pstmt!=null) pstmt.close();
-			if(con!=null) con.close();
-		} catch (Exception e2) {
-			e2.printStackTrace();
+			sql="update board set btitle=?,bcontent=? where bid=?";
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, btitle);
+			pstmt.setString(2, bcontent);
+			pstmt.setInt(3, bid);
+			pstmt.executeUpdate();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 	
-	return dto;
-}
-
-
-public ArrayList<Dto> list(){
-	try {
-		sql="select * from mvctable";
-		con=ds.getConnection();
-		pstmt=con.prepareStatement(sql);
-		rs=pstmt.executeQuery();
+	
+	
+	//寃뚯떆湲� �궘�젣
+	public void delete(int bid) {
 		
-		while(rs.next()) {
-			Dto dto1=new Dto();
-			num=rs.getInt("num");
-			name=rs.getString("name");
-			title=rs.getString("title");
-			content=rs.getString("content");
-			wdate=rs.getTimestamp("wdate");
-			hit=rs.getInt("hit");
-			dto1=new Dto(num, name, title, content, wdate, hit);
-			list.add(dto1);
+			try {
+				sql="delete board where bid=?";
+				con=ds.getConnection();
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, bid);
+				pstmt.executeQuery();
+		
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(rs!=null)rs.close();
+					if(pstmt!=null) pstmt.close();
+					if(con!=null) con.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+
+		}
+	
+	
+	
+	//寃뚯떆湲� �옉�꽦write
+	public void write(String bname,String btitle,String bcontent) {
+		try {
+			sql="insert into board values(b_sequ.nextval,?,?,?,sysdate,0,b_sequ.currval,0,0)";
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, bname);
+			pstmt.setString(2, btitle);
+			pstmt.setString(3, bcontent);
+			pstmt.executeUpdate();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		
+	
+	}
+	
+	public void reply(int bid,String btitle,String bname, String bcontent,int bgroup,int bindent,int bstep) {
+		try {
 			
+			sql="insert into board values(b_sequ.nextval,?,?,?,sysdate,0,?,?,?)";
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, bname);
+			pstmt.setString(2, btitle);
+			pstmt.setString(3, bcontent);
+			pstmt.setInt(4,bgroup );
+			pstmt.setInt(5,bstep+1 );
+			pstmt.setInt(6,bindent+1 );
+			pstmt.executeUpdate();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		
-	} catch (Exception e) {
-		e.printStackTrace();
-	}finally {
+	}
+	
+	
+	//寃뚯떆湲� 以� �븯�굹�쓽 肄섑뀗痢� �솗�씤contentView
+	public Dto getcontent(int bid) {
+		
+		uphit(bid);
+		
 		try {
-			if(rs!=null) rs.close();
-			if(pstmt!=null) pstmt.close();
-			if(con!=null) con.close();
-		} catch (Exception e2) {
-			e2.printStackTrace();
+			sql="select * from board where bid=?";
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, bid);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				bid=rs.getInt("bid");
+				bname=rs.getString("bname");
+				btitle=rs.getString("btitle");
+				bcontent=rs.getString("bcontent");
+				bdate=rs.getTimestamp("bdate");
+				bhit=rs.getInt("bhit");
+				bgroup=rs.getInt("bgroup");
+				bstep=rs.getInt("bstep");
+				bindent=rs.getInt("bindent");
+				
+				dto=new Dto(bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent);
+				
+				
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return dto;
+	}//contentView
+		
+
+	//寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃 List
+	public ArrayList<Dto> List(){
+		try {
+			sql="select * from board order by bgroup desc, bstep asc";
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Dto dto=new Dto();
+				bid=rs.getInt("bid");
+				bname=rs.getString("bname");
+				btitle=rs.getString("btitle");
+				bcontent=rs.getString("bcontent");
+				bdate=rs.getTimestamp("bdate");
+				bhit=rs.getInt("bhit");
+				bgroup=rs.getInt("bgroup");
+				bstep=rs.getInt("bstep");
+				bindent=rs.getInt("bindent");
+				
+				dto=new Dto(bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent);
+				list.add(dto);
+				
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return list;
+	}//List
+	
+	
+	//議고쉶�닔 利앷�
+	public void uphit(int bid) {
+		try {
+			sql="update board set bhit=bhit+1 where bid=?";
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, bid);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 	
-	return list;
-}
-
-public int uphit(int num) {
-	int check=0;
-	try {
-		sql="update mvctable set hit=hit+1 where num=?";
-		con=ds.getConnection();
-		pstmt=con.prepareStatement(sql);
-		pstmt.setInt(1, num);
-		check=pstmt.executeUpdate();
-		
-		
-	} catch (Exception e) {
-		e.printStackTrace();
-	}finally {
-		try {
-			if(rs!=null) rs.close();
-			if(pstmt!=null) pstmt.close();
-			if(con!=null) con.close();
-		} catch (Exception e2) {
-			e2.printStackTrace();
-		}
-	}
-	return check;
-}
-}
-
 	
-
+	
+}
