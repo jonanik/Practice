@@ -44,9 +44,10 @@
       </tr>
     </table>
 
-    <a href="#"><div class="list"><a href="list.do">목록</a></div></a>
-    <a href="#"><div class="list">삭제</div></a>
-    <a href="#"><div class="list">수정</div></a>
+    <a href="list.do"><div class="list">목록</div></a>
+   <a href="delete.do?bId=${content_view.bId}"><div class="list">삭제</div></a>
+   	<a href="modify_view.do?bId=${content_view.bId}"><div class="list">수정</div></a>
+   		<a href="reply_view.do?bId=${content_view.bId}"><div class="list">댓글달기</div></a>
   </section>
 </body>
 </html>

@@ -10,7 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.ex.BCommand.BCommand;
+import com.javalec.ex.BCommand.BDeleteCommand;
 import com.javalec.ex.BCommand.BListcommand;
+import com.javalec.ex.BCommand.BModifyCommand;
+import com.javalec.ex.BCommand.BModifyViewCommand;
+import com.javalec.ex.BCommand.BReplyCommand;
+import com.javalec.ex.BCommand.BReplyViewCommand;
+import com.javalec.ex.BCommand.BWritecommand;
 import com.javalec.ex.BContentCommand.BContentcommand;
 
 
@@ -37,6 +43,8 @@ public class BFront extends HttpServlet {
 	}
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("actionDo 호출");
+		request.setCharacterEncoding("utf-8");
+		
 		String pageView=null;
 		BCommand bcom=null;
 		
@@ -53,12 +61,32 @@ public class BFront extends HttpServlet {
 			bcom=new BContentcommand();
 			bcom.execute(request, response);
 			pageView="content_view.jsp";
-		}else if(com.equals("/write.do")){
-//			bcom=new BWritecommand();
-			bcom.execute(request, response);
-			pageView="list.do";
 		}else if(com.equals("/write_view.do")) {
 			pageView="write_view.jsp";
+		}else if(com.equals("/write.do")){
+			bcom=new BWritecommand();
+			bcom.execute(request, response);
+			pageView="list.do";
+		}else if(com.equals("/delete.do")) {
+			bcom=new BDeleteCommand();
+			bcom.execute(request, response);
+			pageView="list.do";
+		}else if(com.equals("/reply_view.do")) {
+			bcom=new BReplyViewCommand();
+			bcom.execute(request, response);
+			pageView="reply_view.jsp";
+		}else if(com.equals("/reply.do")) {
+			bcom=new BReplyCommand();
+			bcom.execute(request, response);
+			pageView="list.do";
+		}else if(com.equals("/modify_view.do")) {
+			bcom=new BModifyViewCommand();
+			bcom.execute(request, response);
+			pageView="modify_view.jsp";
+		}else if(com.equals("/modify.do")) {
+			bcom=new BModifyCommand();
+			bcom.execute(request, response);
+			pageView="list.do";
 		}
 		
 		//forward
