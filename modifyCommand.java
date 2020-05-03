@@ -4,18 +4,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import home.java.ex.Dao.Dao;
-import home.java.ex.Dto.Dto;
 import home.java.ex.Interace.Interface;
 
-public class modifyViewCommand implements Interface {
+public class modifyCommand implements Interface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
 		int bId=Integer.parseInt(request.getParameter("bId"));
+		String bTitle=request.getParameter("bTitle");
+		String bContent=request.getParameter("bContent");
 		Dao dao=new Dao();
-		Dto dto=new Dto();
-		dto=dao.modiGetCon(bId);
-		request.setAttribute("modify", dto);
+		dao.modify(bId, bTitle, bContent);
 
 	}
 

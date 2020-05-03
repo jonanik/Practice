@@ -1,26 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-
-<h2>ì œëª©:${contentView.btitle }</h2>
-<p>ì‘ì„±ì:${contentView.bname }</p>
-<p>ì‘ì„±ì¼:${contentView.bdate }</p>
-<h4>ë‚´ìš©</h4>
-<p>${contentView.bcontent }</p>
-<h4>ì¡°íšŒìˆ˜</h4>
-<p>${contentView.bhit }</p>
-<button onclick="location.href='replyView.do?bid=${contentView.bid}'">ëŒ“ê¸€ë‹¬ê¸°</button>
-<button onclick="location.href='modifyView.do?bid=${contentView.bid}'">ìˆ˜ì •</button>
-<button onclick="location.href='delete.do?bid=${contentView.bid}'">ì‚­ì œ</button>
-<button onclick="location.href='list.do'">ëª©ë¡</button>
-
-
+<h1>${content.bId }.${content.bTitle }</h1><h3>Á¶È¸¼ö:${content.bHit}</h3>
+<textarea rows="17" cols="80" readonly>${content.bContent } </textarea><br>
+<button onclick="location.href='modifyView.do?bId=${content.bId}'">¼öÁ¤</button>
+<button onclick="location.href='delete.do?bId=${content.bId}'">»èÁ¦</button>
+<button onclick="location.href='replyForm.do?bId=${content.bId}'">´ñ±Û´Ş±â</button>
+<button onclick="location.href='list.do'">¸ñ·Ï</button>
 </body>
 </html>

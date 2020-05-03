@@ -7,15 +7,15 @@ import home.java.ex.Dao.Dao;
 import home.java.ex.Dto.Dto;
 import home.java.ex.Interace.Interface;
 
-public class modifyViewCommand implements Interface {
+public class ContentViewCommand implements Interface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		int bId=Integer.parseInt(request.getParameter("bId"));
+	int bId=Integer.parseInt(request.getParameter("bId"));
 		Dao dao=new Dao();
 		Dto dto=new Dto();
-		dto=dao.modiGetCon(bId);
-		request.setAttribute("modify", dto);
+	dto=dao.getContent(bId);
+	request.setAttribute("content", dto);
 
 	}
 

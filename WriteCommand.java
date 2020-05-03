@@ -1,19 +1,21 @@
-package practice.java.ex.command;
+package home.java.ex.Command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import practice.java.ex.Dao.Dao;
+import home.java.ex.Dao.Dao;
+import home.java.ex.Interace.Interface;
 
 public class WriteCommand implements Interface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String bname=request.getParameter("bname");
-		String btitle=request.getParameter("btitle");
-		String bcontent=request.getParameter("bcontent");
+		String bName=request.getParameter("bName");
+		String bTitle=request.getParameter("bTitle");
+		String bContent=request.getParameter("bContent");
+				System.out.println(bContent);
 		Dao dao=new Dao();
-		dao.write(bname,btitle,bcontent);
+		dao.write(bName,bTitle,bContent);
 
 	}
 
