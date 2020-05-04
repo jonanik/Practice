@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1><a href="list.do">리스트 로이동</a></h1>
+<a href="list.do"><h1>리스트페이지로 이동</h1></a>
 </body>
 </html>
