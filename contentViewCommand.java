@@ -11,6 +11,7 @@ public class contentViewCommand implements Interface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int bid=Integer.parseInt(request.getParameter("bid"));
+		System.out.println(bid);
 		Dao dao=new Dao();
 		Dto dto=new Dto();
 		dto=dao.getcontent(bid);

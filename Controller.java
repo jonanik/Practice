@@ -13,8 +13,6 @@ import practice.java.ex.command.DeleteCommand;
 import practice.java.ex.command.Interface;
 import practice.java.ex.command.ListCommand;
 import practice.java.ex.command.ModifyCommand;
-import practice.java.ex.command.ReplyCommand;
-import practice.java.ex.command.ReplyViewCommend;
 import practice.java.ex.command.WriteCommand;
 import practice.java.ex.command.contentViewCommand;
 import practice.java.ex.command.modifyViewCommand;
@@ -32,18 +30,17 @@ public class Controller extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doGet�쑝濡� �뱾�뼱�샂");
+		System.out.println("doGet으로 들어옴");
 		actionDo(request,response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doPost濡� �뱾�뼱�샂");
+		System.out.println("doPost로 들어옴");
 		actionDo(request,response);
 	}
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		System.out.println("actionDo濡� �뱾�뼱�샂");
+		System.out.println("actionDo로 들어옴");
 		String viewPage=null;
 		String uri=request.getRequestURI();
 		String conpath=request.getContextPath();
@@ -67,7 +64,7 @@ public class Controller extends HttpServlet {
 			in=new DeleteCommand();
 			in.execute(request, response);
 			viewPage="list.do";
-		}else if(com.equals("/modifyView.do")) {
+		}else if(com.equals("modifyView")) {
 			in=new modifyViewCommand();
 			in.execute(request, response);
 			viewPage="modify.jsp";
@@ -75,16 +72,8 @@ public class Controller extends HttpServlet {
 			in=new ModifyCommand();
 			in.execute(request, response);
 			viewPage="list.do";
-		}else if(com.contentEquals("/replyView.do")) {
-			in=new ReplyViewCommend();
-			in.execute(request, response);
-			viewPage="replyView.jsp";
-		}else if(com.contentEquals("/reply.do")) {
-			in=new ReplyCommand();
-			in.execute(request, response);
-			viewPage="list.do";
 		}
-		request.setCharacterEncoding("utf-8");
+		
 		RequestDispatcher dispatcher=request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 		

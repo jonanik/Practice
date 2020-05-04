@@ -1,22 +1,20 @@
-package home.java.ex.Command;
+package practice.java.ex.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import home.java.ex.Dao.Dao;
-import home.java.ex.Dto.Dto;
-import home.java.ex.Interace.Interface;
+import practice.java.ex.Dao.Dao;
+import practice.java.ex.Dto.Dto;
 
 public class modifyViewCommand implements Interface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		int bId=Integer.parseInt(request.getParameter("bId"));
+		int bid=Integer.parseInt(request.getParameter("bid"));
 		Dao dao=new Dao();
 		Dto dto=new Dto();
-		dto=dao.modiGetCon(bId);
+	dto=dao.getcontent(bid);
 		request.setAttribute("modify", dto);
-
 	}
 
 }
