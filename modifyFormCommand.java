@@ -4,16 +4,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.ex.BDao.BDao;
+import com.javalec.ex.BDto.BDto;
 
-public class ModifyCommand implements Bcommand {
+public class modifyFormCommand implements Bcommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		BDao dao=new BDao();
+		BDto dto=new BDto();
 		int bid=Integer.parseInt(request.getParameter("bid"));
-		String btitle=request.getParameter("btitle");
-		String bcontent=request.getParameter("bcontent");
-		dao.modify(bid,btitle,bcontent);
+		dto=dao.getdata(bid);
+		request.setAttribute("data", dto);
 
 	}
 

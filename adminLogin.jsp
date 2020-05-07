@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/adminLogin.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-     
+ 
 </head>
 <body>
 	<header>
@@ -17,13 +17,8 @@
 				<li><a href="login.html">로그인</a></li>
 				<li><a href="my_notice.html">고객행복센터</a></li>
 				<li>배송지역검색</li>
-				<%
-   if(session.getAttribute("aId")==null){
- %> 
-				<li><a href="adminLogin.do">ADMINISTRATOR</a></li>
-<%}else if(session.getAttribute("aId")!=null){ %>
-				<li><a href="adloginOk.do">ADMINISTRATOR</a></li>
-<%} %>
+				<li><a href="adminLogin.html">ADMINISTRATOR</a></li>
+
 			</ul>
 		</div>
 		<nav>
@@ -31,23 +26,39 @@
 			<ul>
 				<li>COOKIT소개</li>
 				<li>COOKIT메뉴</li>
-				<li><a href="list.do">공지사항</a></li>
-				<li><a href="EventList.do">이벤트</a></li>
+				<li>리뷰</li>
+				<li><a href="eventList.html">이벤트</a></li>
 				<li>MY쿡킷</li>
+
 			</ul>
 			<ul>
 				<li><a href="#"><span>장바구니</span></a></li>
 				<li><a href="#"><span>메뉴찾기</span></a></li>
 			</ul>
+
 		</nav>
 
 
 	</header>
 	<section>
-		<div>
-			<h1>RESOM LOG</h1>
-			<p>잊지 못할 당신의 여정</p>
-			<p>리솜리조트의 새로운 소식</p>
+		<div id="login">
+			<h1>관리자 로그인</h1>
+			<div>
+				
+			</div>
+			<form action="adLogin.do" name="adminLogin" method="post">
+			<div id=input>
+					<input type="text" class="inputInfo" name="aId" value=""placeholder="admin "> 
+					<input type="text" class="inputInfo" name="aPw" value=""placeholder="password ">
+				<div>
+					<label><input type="checkbox" name="saveId" value="y"></label>
+					<span id="saveId">아이디 저장</span> <a>비밀번호 찾기</a> <a>아이디찾기</a>
+				</div>
+				<input id="loginbutton" type="submit" value="로그인">
+			</div>
+			</form>
+			<div></div>
+			
 		</div>
 
 	</section>

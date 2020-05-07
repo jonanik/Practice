@@ -20,7 +20,7 @@
 
 </head>
 <body>
-	<form action="write.do"  name="form" method="post">
+	<form action="modify.do"  name="form" method="post">
 		<header>
 			<div id="nav_up">
 				<ul>
@@ -51,14 +51,15 @@
 		<section>
 
 
-			<h4>게시판 글작성</h4>
+			<h4>게시글 수정</h4>
 			<div id="big_box">
 				<dl>
 					<dt>제목</dt>
 					<dd>
 						<div>
 							<div>
-								<input type="text" id="txt" name="btitle">
+								<input type="hidden" name="bid" value="${data.bid }">
+								<input type="text" id="txt" name="btitle" value="${data.btitle }">
 							</div>
 						</div>
 
@@ -71,15 +72,15 @@
 				<dt>글 내용</dt>
 				<dd>
 					<textarea name="bcontent" id="question" cols="87" rows="12" title="문의 내용 작성란"
-						placeholder="내용을 입력해주세요" maxlength="1000"></textarea>
+						>${data.bcontent }</textarea>
 				</dd>
 			</dl>
 			<div id="check_button2">
 				<button id="btn_white" onclick="location.href='moreList.do'">
 					<span>취소</span>
 				</button>
-				<button id="btn_green" onclick="location.href='write.do'">
-					<span>확인</span>
+				<button id="btn_green" onclick="location.href='modify.do'">
+					<span>수정 완료</span>
 				</button>
 			</div>
 

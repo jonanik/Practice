@@ -1,4 +1,4 @@
-package com.javalec.ex.BListcommand;
+package com.javalec.ex.Bcommand;
 
 import java.util.ArrayList;
 
@@ -7,36 +7,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.ex.BDao.BDao;
 import com.javalec.ex.BDto.BDto;
-import com.javalec.ex.Bcommand.Bcommand;
+import com.javalec.ex.BDto.EDto;
 
-public class BListcommand implements Bcommand {
+public class EventListCommand implements Bcommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		BDao dao=new BDao();
 		
 		int page=1;//최초기본 1페이지 세팅
 		int limit=10;//1page=게시글 10개
-		String searchflag=request.getParameter("searchflag");//검색으로 넘어왔냐 아니냐
-		String opt=request.getParameter("opt");//전체,제목,내용
-		String search=request.getParameter("search");//검색어
 		
-		if(opt==null) opt="";
-		if(search==null) search="";
+		ArrayList<EDto> eList=new ArrayList<EDto>();
 		
+		eList=dao.getEvents(page,limit);
+		request.setAttribute("eList", eList);
 		
+			
 		//넘어온 page가 있을때 -예)4페이지
 		if(request.getParameter("page")!=null) {
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
-		
-		
-		BDao dao=new BDao();
-		ArrayList<BDto> list=new ArrayList<BDto>();
-		//페이지별 리스트 개수 가져오기
-		list=dao.list(page,limit,opt,search);
 		//전체 게시글 count(*)
-		int listcount=dao.getlistCount(opt,search);
+		int listcount=dao.getlistCount1();
 		//최대페이지 수
 		int maxpage=(int)((double)listcount/limit+0.95);
 		//처음페이지
@@ -44,8 +38,6 @@ public class BListcommand implements Bcommand {
 		//마지막페이지
 		int endpage=maxpage;//1~10까지는 maxpage가 endpage가 됨.
 		if(endpage>startpage+10-1) endpage=startpage+10-1;
-		
-		request.setAttribute("list", list);
 		
 		request.setAttribute("listcount", listcount);
 		request.setAttribute("page",page);
@@ -57,15 +49,11 @@ public class BListcommand implements Bcommand {
 		System.out.println("page:"+page);
 		System.out.println("maxpage:"+maxpage);
 		System.out.println("startpage:"+startpage);
-		System.out.println("endpage:"+endpage);
+		System.out.println("endpage:"+endpage);	
 		
-		if(search!="") {
-			searchflag="1";
-			request.setAttribute("searchflag", searchflag);
-			request.setAttribute("opt", opt);
-			request.setAttribute("search", search);
-		}
+	}
+		
 		
 	}
 
-}
+
