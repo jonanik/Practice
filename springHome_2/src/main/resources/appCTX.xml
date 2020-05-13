@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="calculator" class="com.java.ex.Calculator"/>
+<bean id="temperature" class="com.java.ex.Temperature">
+<property name="nav" value="대한민국"/>
+<property name="temp" value="24.5"/>
+<property name="calculator">
+	<ref bean="calculator"/>
+</property>
+
+</bean>
+
+</beans>
