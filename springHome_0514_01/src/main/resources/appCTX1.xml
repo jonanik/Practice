@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="student1" class="home.javalec.ex.Student">
+		<constructor-arg value="조요한" />
+		<constructor-arg value="30" />
+		<constructor-arg>
+			<list>
+				<value>헬스</value>
+				<value>자전거</value>
+				<value>노래</value>
+			</list>
+		</constructor-arg>
+		<property name="height" value="178" />
+		<property name="weight" value="97" />
+	</bean>
+	<bean id="student2" class="home.javalec.ex.Student">
+		<constructor-arg value="박단비" />
+		<constructor-arg value="30" />
+		<constructor-arg>
+			<list>
+				<value>뜨개질</value>
+				<value>필름카메라</value>
+				<value>커피</value>
+			</list>
+		</constructor-arg>
+		<property name="height" value="167" />
+		<property name="weight" value="49" />
+	</bean>
+	<bean id="stuInfo" class="home.javalec.ex.StuInfo">
+		<property name="student">
+			<ref bean="student2" />
+		</property>
+	</bean>
+
+</beans>
